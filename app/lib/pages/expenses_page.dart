@@ -16,6 +16,7 @@ class _ExpensesState extends State<Expenses> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFE5EFFF),
         body: Column(
           children: [
             //image
@@ -26,7 +27,7 @@ class _ExpensesState extends State<Expenses> {
                 width: 1500,
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
             //pie chart
             Padding(
               padding: const EdgeInsets.all(18.0),
@@ -35,15 +36,17 @@ class _ExpensesState extends State<Expenses> {
             //textfield
             Expanded(
               child: SingleChildScrollView(
-                child:Column(
-                  children: [
-                    Textfieldexpenses(),
-                    Textfieldexpenses(),
-                    Textfieldexpenses(),
-                    Textfieldexpenses(),
-                    Textfieldexpenses(),
-                    
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      Textfieldexpenses(),
+                      Textfieldexpenses(),
+                      Textfieldexpenses(),
+                      Textfieldexpenses(),
+                      Textfieldexpenses(),
+                    ],
+                  ),
                 ),
               ),
             ),
