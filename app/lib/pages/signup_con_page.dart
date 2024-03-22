@@ -3,7 +3,6 @@
 import 'package:app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
-
 class Signupcon extends StatelessWidget {
   const Signupcon({super.key});
 
@@ -52,7 +51,9 @@ class Signupcon extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: ElevatedButton(
-                    onPressed: null,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/expencespage');
+                    },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(

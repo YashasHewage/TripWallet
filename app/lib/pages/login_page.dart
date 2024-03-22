@@ -3,7 +3,6 @@
 import 'package:app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -16,34 +15,29 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context)
-            .unfocus(); // Dismiss keyboard when tapped outside of text field
+        FocusScope.of(context).unfocus();
       },
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
+          body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 18),
-                  //top text
+                  // Top text
                   Text(
                     'Welcome Back!',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
+                  SizedBox(height: 8),
                   Text('Few steps away'),
 
                   Center(child: Image.asset('assets/login.png')),
-                  Spacer(),
-
-                  //text field
+                  SizedBox(height: 20), // Added SizedBox for spacing
+                  // Text fields
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -54,11 +48,13 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 25),
                       MyTextField(hintText: 'Password', obscureText: true),
 
-                      SizedBox(height: 100),
+                      SizedBox(height: 40),
 
-                      //Login button
+                      // Login button
                       ElevatedButton(
-                        onPressed: null, // Add your login functionality here
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/person');
+                        }, // Add your login functionality here
                         style: ButtonStyle(
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
@@ -79,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 25),
 
-                      //Don't have an account? signup
+                      // Don't have an account? signup
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -95,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushNamed(context, '/signupper');
                             },
                             child: Text(
-                              'sign up',
+                              'Sign up',
                               style: TextStyle(
                                   color: Colors.blue,
                                   fontSize: 17,
