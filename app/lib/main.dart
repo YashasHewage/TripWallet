@@ -7,9 +7,12 @@ import 'package:app/pages/login_page.dart';
 import 'package:app/pages/signup_con_page.dart';
 import 'package:app/pages/signup_per_page.dart';
 import 'package:app/widgets/all_expences_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
