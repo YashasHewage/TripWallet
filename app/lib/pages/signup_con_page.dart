@@ -18,13 +18,58 @@ class _SignupconState extends State<Signupcon> {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     final confirmPasswordController = TextEditingController();
-
     Future<void> register() async {
+      // Check if passwords match
+      if (passwordController.text.trim() !=
+          confirmPasswordController.text.trim()) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text("Passwords do not match."),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
+      // Check if password is at least 6 characters long
+      if (passwordController.text.trim().length < 6) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text("Password must be at least 6 characters long."),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: emailController.text.trim(),
-                password: passwordController.text.trim());
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
         String userId = userCredential.user!.uid;
         await FirebaseFirestore.instance.collection('users').doc(userId).set({
           'email': emailController.text,
