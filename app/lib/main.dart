@@ -5,6 +5,7 @@ import 'package:app/pages/home_page.dart';
 import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/login_page.dart';
 import 'package:app/pages/signup_con_page.dart';
+import 'package:app/pages/signup_per_page.dart';
 import 'package:app/widgets/all_expences_page.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,8 @@ class MyApp extends StatelessWidget {
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
         '/login': (context) => const LoginPage(),
+        '/person': (context) => const Signupperinfo(),
+        '/concat': (context) => const Signupcon(),
       },
     );
   }
