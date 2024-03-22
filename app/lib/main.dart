@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:app/pages/Expences_page.dart';
+import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/home_page.dart';
-import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/login_page.dart';
 import 'package:app/pages/signup_con_page.dart';
 import 'package:app/pages/signup_per_page.dart';
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: loading(),
       routes: {
+        '/': (context) => const Addtrip(),
         '/homepage': (context) => const HomePage(),
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
