@@ -32,8 +32,7 @@ class _WelcomeviewState extends State<Welcomeview> {
                 Image.asset("assets/images/splashscreen.png",
                     width: media.width * 0.5, fit: BoxFit.contain),
                    const Spacer(),
-                Text("Seamless travel money management",style: TextStyle(color: TColor
-                \55645th9 dsz),),
+                const Text("Seamless travel money management",style: TextStyle(color: Colors.lightBlue),),
               ],
             ),
           ),
