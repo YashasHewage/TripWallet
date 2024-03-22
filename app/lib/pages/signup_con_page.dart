@@ -1,13 +1,43 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:app/components/my_textfield.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Signupcon extends StatelessWidget {
+class Signupcon extends StatefulWidget {
   const Signupcon({super.key});
 
   @override
+  State<Signupcon> createState() => _SignupconState();
+}
+
+class _SignupconState extends State<Signupcon> {
+  @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
+    Future<void> register() async {
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text.trim(),
+                password: passwordController.text.trim());
+        String userId = userCredential.user!.uid;
+        await FirebaseFirestore.instance.collection('users').doc(userId).set({
+          'email': emailController.text,
+        });
+        if (mounted) {
+          Navigator.pushNamed(context, '/login');
+        }
+      } catch (e) {
+        print("error:${e.toString()}");
+        return;
+      }
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -38,12 +68,21 @@ class Signupcon extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MyTextField(hintText: 'Email', obscureText: false),
+                    MyTextField(
+                        controller: emailController,
+                        hintText: 'Email',
+                        obscureText: false),
                     SizedBox(height: 40),
                     //contact number text feild
-                    MyTextField(hintText: 'Password', obscureText: true),
+                    MyTextField(
+                        controller: passwordController,
+                        hintText: 'Password',
+                        obscureText: true),
                     SizedBox(height: 40),
-                    MyTextField(hintText: "Confirm Password", obscureText: true)
+                    MyTextField(
+                        controller: confirmPasswordController,
+                        hintText: "Confirm Password",
+                        obscureText: true)
                   ],
                 ),
                 Spacer(),
@@ -51,9 +90,7 @@ class Signupcon extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/expencespage');
-                    },
+                    onPressed: register,
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
