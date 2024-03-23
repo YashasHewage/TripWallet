@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:app/pages/Aboutus.dart';
 import 'package:app/pages/Expences_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/home_page.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/person': (context) => const Signupperinfo(),
         '/concat': (context) => const Signupcon(),
+        '/Aboutus': (context) => AboutUsPage(),
       },
     );
   }
