@@ -277,7 +277,7 @@ class _AddNewExpenceState extends State<AddNewExpence> {
               ),
             ),
             child: CircleAvatar(
-              backgroundColor: color,
+              backgroundColor:color,
               radius: 30.0,
               child: Icon(icon, color: Colors.white, size: 30.0),
             ),
