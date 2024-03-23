@@ -173,7 +173,7 @@ class _Expences_StateState extends State<ExpencesState> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 40.0, left:20), // Adjust this value to move the CircleAvatar down
+                  padding: EdgeInsets.only(top: 50.0, left:20), // Adjust this value to move the CircleAvatar down
                   child: CircleAvatar(
                     radius:16.0, // Change this to your desired size
                     backgroundColor: Colors.white, // Change this to your desired color
@@ -184,12 +184,12 @@ class _Expences_StateState extends State<ExpencesState> {
                   ),
                 ),
                         Container(
-                          margin: EdgeInsets.only(right: 15.0, top:60), 
+                          margin: EdgeInsets.only(right: 15.0, top:70), 
                           child: Center( 
                             child: Text(
-                              'Japan',
+                              'Paris',
                               style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                                 fontSize:24,
                                 color:Colors.white
                               ), 

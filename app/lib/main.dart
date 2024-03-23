@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-        // '/': (context) => const Addtrip(),
+        '/addtrip': (context) => const Addtrip(),
         '/settings': (context) => const ProfilePage(),
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
