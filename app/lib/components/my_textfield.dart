@@ -7,11 +7,10 @@ class MyTextField extends StatefulWidget {
   final bool obscureText;
   final TextEditingController controller; // Added TextEditingController
   const MyTextField(
-      {Key? key,
+      {super.key,
       required this.hintText,
       required this.obscureText,
-      required this.controller}) // Marked as required
-      : super(key: key);
+      required this.controller});
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();

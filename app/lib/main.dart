@@ -1,17 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_super_parameters
 
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
-
 import 'package:app/pages/loading_page.dart';
-
 import 'package:app/pages/default_addtrip.dart';
-
-import 'package:app/pages/home_page.dart';
 import 'package:app/pages/language_set.dart';
-
-
-
 import 'package:app/pages/login_page.dart';
 import 'package:app/pages/profile_edit.dart';
 import 'package:app/pages/profilepage.dart';
@@ -22,10 +15,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-
-
-void main() {
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -34,7 +23,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -51,13 +40,8 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-
         '/': (context) => const Addtrip(),
         '/settings': (context) => const ProfilePage(),
-        '/homepage': (context) => const HomePage(),
-
-        // '/': (context) => const Addtrip(),
-
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
         '/login': (context) => const LoginPage(),

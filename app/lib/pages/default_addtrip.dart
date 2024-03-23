@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, unused_local_variable, unused_field, unused_import, curly_braces_in_flow_control_structures, unused_element
+// ignore_for_file: use_super_parameters, unused_local_variable, unused_field, unused_import, curly_braces_in_flow_control_structures, unused_element, unnecessary_import
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';

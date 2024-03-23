@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, prefer_const_constructors
+// ignore_for_file: unused_element, prefer_const_constructors, file_names, camel_case_types, non_constant_identifier_names
 
 import 'package:app/Models/expence.dart';
 import 'package:app/widgets/add_new_expence.dart';
