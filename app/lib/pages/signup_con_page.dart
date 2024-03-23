@@ -168,7 +168,7 @@ class _SignupconState extends State<Signupcon> {
                     SizedBox(width: 8),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/loginpage');
+                        Navigator.pushNamed(context, '/login');
                       },
                       child: Text(
                         'Log in',
