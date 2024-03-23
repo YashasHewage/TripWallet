@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-        '/': (context) => const Addtrip(),
+        // '/': (context) => const Addtrip(),
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
         '/login': (context) => const LoginPage(),
