@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "244413908943",
+    "project_id": "trip-wallet-8253c",
+    "storage_bucket": "trip-wallet-8253c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244413908943:android:79232dda6b1ebd9562f4ba",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu9LBdKVr_bb9YchkhMl4x3vE5xXa4AXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

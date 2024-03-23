@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatefulWidget {
   final String hintText;
   final bool obscureText;
+  final TextEditingController controller; // Added TextEditingController
   const MyTextField(
-      {super.key, required this.hintText, required this.obscureText});
+      {Key? key,
+      required this.hintText,
+      required this.obscureText,
+      required this.controller}) // Marked as required
+      : super(key: key);
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -20,6 +25,7 @@ class _MyTextFieldState extends State<MyTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 17.0),
       child: TextField(
+        controller: widget.controller, // Use the provided controller
         style: TextStyle(color: Colors.black),
         obscureText: widget.obscureText ? _obscureText : false,
         decoration: InputDecoration(

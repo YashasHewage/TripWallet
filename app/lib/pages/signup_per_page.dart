@@ -8,6 +8,10 @@ class Signupperinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final firstname = TextEditingController();
+    final lastname = TextEditingController();
+    final dob = TextEditingController();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -37,15 +41,24 @@ class Signupperinfo extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   children: [
                     //first name text field
-                    MyTextField(hintText: 'First name', obscureText: false),
+                    MyTextField(
+                        controller: firstname,
+                        hintText: 'First name',
+                        obscureText: false),
                     SizedBox(height: 40),
 
                     //Last name text field
-                    MyTextField(hintText: 'Last name', obscureText: false),
+                    MyTextField(
+                        controller: lastname,
+                        hintText: 'Last name',
+                        obscureText: false),
                     SizedBox(height: 40),
 
                     //date of birth text field
-                    MyTextField(hintText: 'Date of birth', obscureText: false),
+                    MyTextField(
+                        controller: dob,
+                        hintText: 'Date of birth',
+                        obscureText: false),
                     SizedBox(height: 40),
                   ],
                 ),

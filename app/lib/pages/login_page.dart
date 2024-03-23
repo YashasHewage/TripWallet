@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ffi';
+
 import 'package:app/components/my_textfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,6 +15,22 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  Future<void> login() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
+    } catch (e) {
+      print(e);
+      return;
+    }
+    if (mounted) {
+      Navigator.pushNamed(context, '/expencespage');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -42,18 +62,22 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyTextField(
+                        controller: emailController,
                         hintText: 'Email',
                         obscureText: false,
                       ),
                       SizedBox(height: 25),
-                      MyTextField(hintText: 'Password', obscureText: true),
+                      MyTextField(
+                          controller: passwordController,
+                          hintText: 'Password',
+                          obscureText: true),
 
                       SizedBox(height: 40),
 
                       // Login button
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/person');
+                          login();
                         }, // Add your login functionality here
                         style: ButtonStyle(
                           shape: MaterialStateProperty.all(
@@ -62,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           minimumSize: MaterialStateProperty.all(
-                            Size(350, 60),
+                            ui.Size(350, 60),
                           ),
                           backgroundColor: MaterialStateProperty.all(
                             Color(0xFF213660),
@@ -88,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/signupper');
+                              Navigator.pushNamed(context, '/concat');
                             },
                             child: Text(
                               'Sign up',
