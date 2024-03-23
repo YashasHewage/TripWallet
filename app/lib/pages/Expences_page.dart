@@ -142,18 +142,16 @@ class _Expences_StateState extends State<ExpencesState> {
   }
 
   List<Color> pieChartColors = [
-    Color(0xFF48742C),
-    Color(0xFFFF9900),
-    Color(0xFF489FB5),
-    Color(0xFFFF0000),
-    Color(0xFF7494D0),
+    Color.fromARGB(255, 46, 105, 9),
+    Color.fromARGB(255, 255, 170, 42),
+    Color.fromARGB(255, 80, 200, 255),
+    Color.fromARGB(255, 252, 46, 46),
+ Color.fromARGB(255, 35, 81, 167),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Scaffold(
-        
+    return Scaffold(
         body: Column(
           children: [
             Stack(
@@ -173,33 +171,35 @@ class _Expences_StateState extends State<ExpencesState> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 50.0, left:20), // Adjust this value to move the CircleAvatar down
+                  padding: EdgeInsets.only(
+                      top: 50.0,
+                      left:
+                          20), // Adjust this value to move the CircleAvatar down
                   child: CircleAvatar(
-                    radius:16.0, // Change this to your desired size
-                    backgroundColor: Colors.white, // Change this to your desired color
+                    radius: 16.0, // Change this to your desired size
+                    backgroundColor:
+                        Colors.white, // Change this to your desired color
                     child: Icon(
                       Icons.home_outlined, // Change this to your desired icon
                       color: Colors.black, // Change this to your desired color
                     ),
                   ),
                 ),
-                        Container(
-                          margin: EdgeInsets.only(right: 15.0, top:70), 
-                          child: Center( 
-                            child: Text(
-                              'Paris',
-                              style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w500,
-                                fontSize:24,
-                                color:Colors.white
-                              ), 
-                            ),
-                          ),
-                        ),
-              
+                Container(
+                  margin: EdgeInsets.only(right: 15.0, top: 70),
+                  child: Center(
+                    child: Text(
+                      'Paris',
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 24,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
                 Positioned(
                   bottom: 35,
-                  left:20, 
+                  left: 20,
                   child: Container(
                     width: 351,
                     height: 60,
@@ -209,28 +209,28 @@ class _Expences_StateState extends State<ExpencesState> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: Row( 
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.only(left: 15.0), 
+                          margin: EdgeInsets.only(left: 15.0),
                           child: Text(
                             'wallet balance ',
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
-                              fontSize:15,
-                            ), 
+                              fontSize: 15,
+                            ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(right: 15.0), 
-                          child:  Text(
-                        "LKR.${totalCategoryVal.toStringAsFixed(2)}",
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ), 
+                          margin: EdgeInsets.only(right: 15.0),
+                          child: Text(
+                            "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -313,14 +313,13 @@ class _Expences_StateState extends State<ExpencesState> {
               ),
             ),
 
-
-          ExpenceList(
-            expenceList: _expenceList,
-            onDeletedExpence: OnDeletedExpence,
-          ),
-        ],
-      ),
-      //bottom navigation icons
+            ExpenceList(
+              expenceList: _expenceList,
+              onDeletedExpence: OnDeletedExpence,
+            ),
+          ],
+        ),
+        //bottom navigation icons
         bottomNavigationBar: Container(
           height: 91,
           child: Stack(
@@ -362,11 +361,10 @@ class _Expences_StateState extends State<ExpencesState> {
                       child: Text(
                         '+',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontSize: 24,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w400,
                           height: 0,
                         ),
                       ),

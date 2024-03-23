@@ -32,7 +32,7 @@ class ExpenceTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(0),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2),
           child: Column(
             children: [
               Row(
@@ -48,12 +48,12 @@ class ExpenceTile extends StatelessWidget {
                   ),
                   //title
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12),
                     child: Text(
                       expence.title,
                       style: GoogleFonts.poppins(
                         textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Colors.black, fontWeight: FontWeight.w400),
+                          color: Color.fromARGB(255, 29, 29, 29), fontWeight: FontWeight.w400, fontSize: 20),
                       ),
                     ),
                   ),
@@ -67,7 +67,7 @@ class ExpenceTile extends StatelessWidget {
                           expence.amount.toStringAsFixed(2),
                           style: GoogleFonts.poppins(
                             textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 29, 29, 29),
                               fontWeight: FontWeight.w400,
                               fontSize:20
                             ),
@@ -81,7 +81,7 @@ class ExpenceTile extends StatelessWidget {
                             textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: const Color.fromARGB(255, 129, 129, 129),
                               fontWeight: FontWeight.w400,
-                              fontSize:13
+                              fontSize:12
                             ),
                           ),
                         ),
