@@ -3,11 +3,9 @@
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
 
-
 import 'package:app/pages/loading_page.dart';
 
 import 'package:app/pages/default_addtrip.dart';
-import 'package:app/pages/home_page.dart';
 
 import 'package:app/pages/login_page.dart';
 import 'package:app/pages/signup_con_page.dart';
@@ -31,7 +29,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       home: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
@@ -41,12 +38,8 @@ class MyApp extends StatelessWidget {
               return const LoginPage();
             }
           }),
-      
-
       routes: {
         '/': (context) => const Addtrip(),
-        '/homepage': (context) => const HomePage(),
-
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
         '/login': (context) => const LoginPage(),
