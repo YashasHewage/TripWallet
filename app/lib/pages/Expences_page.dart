@@ -1,6 +1,7 @@
-// ignore_for_file: unused_element, prefer_const_constructors
+// ignore_for_file: unused_element, prefer_const_constructors, file_names, camel_case_types, non_constant_identifier_names
 
 import 'package:app/Models/expence.dart';
+import 'package:app/pages/default_addtrip.dart';
 import 'package:app/widgets/add_new_expence.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -173,23 +174,18 @@ class _Expences_StateState extends State<ExpencesState> {
                 Padding(
                   padding: EdgeInsets.only(
                       top: 50.0,
-                      left:
-                          20), 
-                  child: CircleAvatar(
-                    radius: 16.0, 
-                    backgroundColor:
-
-                        Colors.white, // Change this to your desired color
-                    child: InkWell(
-                      onTap: () {
-                         Navigator.pushNamed(context, '/addtrip');
-                      },
+                      left: 20), 
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/addtrip');
+                    },
+                    child: CircleAvatar(
+                      radius: 16.0, 
+                      backgroundColor: Colors.white, 
                       child: Icon(
-                        Icons.home_outlined, // Change this to your desired icon
-                        color: Colors.black, // Change this to your desired color
+                        Icons.home_outlined, 
+                        color: Colors.black,
                       ),
-
-
                     ),
                   ),
                 ),
@@ -402,7 +398,7 @@ class _Expences_StateState extends State<ExpencesState> {
                         height: 25,
                         child: GestureDetector(
                           onTap: () {
-                          Navigator.pushNamed(context, '/allexpences');
+                          Navigator.pushNamed(context, '/addtrippopup');
                           },
                           child: Icon(
                             Icons.location_on,
@@ -459,7 +455,7 @@ class _Expences_StateState extends State<ExpencesState> {
                       top: 0,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/allexpences');
+                          Navigator.pushNamed(context, '/expencespage');
                         },
                         child: Container(
                           width: 25,
@@ -507,7 +503,7 @@ class _Expences_StateState extends State<ExpencesState> {
               ),
             ],
           ),
-        )
+        ),
 
         // onPressed: () => _openAddExpensesOverlay(context),
 

@@ -32,17 +32,17 @@ class ExpenceTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(0),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal:0 ),
           child: Column(
             children: [
               Row(
                 children: [
                   CircleAvatar(
                     backgroundColor: CategoryColor[expence.category],
-                    radius: 20,
+                    radius: 18,
                     child: Icon(
                       CategoryIcons[expence.category],
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       size: 18,
                     ),
                   ),
@@ -53,14 +53,14 @@ class ExpenceTile extends StatelessWidget {
                       expence.title,
                       style: GoogleFonts.poppins(
                         textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Color.fromARGB(255, 29, 29, 29), fontWeight: FontWeight.w400, fontSize: 20),
+                          color: Color.fromARGB(255, 29, 29, 29), fontWeight: FontWeight.w400, fontSize: 18),
                       ),
                     ),
                   ),
                   Spacer(),
                   //amount
                   Container(
-                    margin: const EdgeInsets.only(right:0),
+                    margin: const EdgeInsets.only(right:5),
                     child: Column(
                       children: [
                         Text(
@@ -69,19 +69,19 @@ class ExpenceTile extends StatelessWidget {
                             textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: Color.fromARGB(255, 29, 29, 29),
                               fontWeight: FontWeight.w400,
-                              fontSize:20
+                              fontSize:18
                             ),
                           ),
                         ),
                         //date
-                        SizedBox(height: 5),
+                        SizedBox(height: 1),
                         Text(
                           expence.getFormatedDate,
                           style: GoogleFonts.poppins(
                             textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: const Color.fromARGB(255, 129, 129, 129),
                               fontWeight: FontWeight.w400,
-                              fontSize:12
+                              fontSize:10
                             ),
                           ),
                         ),

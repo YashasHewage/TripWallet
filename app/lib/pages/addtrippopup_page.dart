@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -482,28 +484,28 @@ class _AddTripPageState extends State<AddTripPopup> {
                       backgroundColor:
                           Colors.white, // Set background color to black
                     ),
-                    child: Text(
+                    child: const Text(
                       'Edit Cover',
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Country',
                 style: TextStyle(fontSize: 18.0),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 value: _selectedCountry,
-                hint: Text("Select Country"),
+                hint: const Text("Select Country"),
                 onChanged: (String? newValue) {
                   setState(() {
                     _selectedCountry = newValue;
                   });
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
@@ -514,21 +516,21 @@ class _AddTripPageState extends State<AddTripPopup> {
                   );
                 }).toList(),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Currency',
                 style: TextStyle(fontSize: 18.0),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 value: _selectedCurrency,
-                hint: Text("Select Currency"),
+                hint: const Text("Select Currency"),
                 onChanged: (String? newValue) {
                   setState(() {
                     _selectedCurrency = newValue;
                   });
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
@@ -539,31 +541,31 @@ class _AddTripPageState extends State<AddTripPopup> {
                   );
                 }).toList(),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Start Date:', style: TextStyle(fontSize: 16)),
+                  const Text('Start Date:', style: TextStyle(fontSize: 16)),
                   Expanded(
                     child: Center(
                       child: Text(
                         '${DateFormat('yyyy-MM-dd').format(_startDate)}',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () => _selectStartDate(context),
-                    child: Text('Select Start Date'),
+                    child: const Text('Select Start Date'),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('End Date:', style: TextStyle(fontSize: 16)),
+                  const Text('End Date:', style: TextStyle(fontSize: 16)),
                   Expanded(
                     child: Center(
                       child: Text(
@@ -580,21 +582,21 @@ class _AddTripPageState extends State<AddTripPopup> {
                 ],
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Budget : $currencyValue',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      editCurrencyValue();
-                    },
-                    child: Text('Edit'),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       'Budget : $currencyValue',
+              //       style: TextStyle(fontSize: 20.0),
+              //     ),
+              //     ElevatedButton(
+              //       onPressed: () {
+              //         editCurrencyValue();
+              //       },
+              //       child: Text('Edit'),
+              //     ),
+              //   ],
+              // ),
               SizedBox(height: 20),
             ],
           ),

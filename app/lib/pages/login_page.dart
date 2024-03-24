@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
-import 'dart:ffi';
 
 import 'package:app/components/my_textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -27,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
     if (mounted) {
-      Navigator.pushNamed(context, '/expencespage');
+      Navigator.pushNamed(context, '/addtrip');
     }
   }
 
