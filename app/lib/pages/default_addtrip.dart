@@ -1,7 +1,14 @@
-// ignore_for_file: use_super_parameters
+// ignore_for_file: use_super_parameters, unused_local_variable, unused_field, unused_import, curly_braces_in_flow_control_structures, unused_element
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart'; // Import the 'intl' package
+
+class Trip {
+  final String name;
+
+  Trip(this.name);
+}
 
 class Addtrip extends StatefulWidget {
   const Addtrip({Key? key}) : super(key: key);
@@ -13,6 +20,57 @@ class Addtrip extends StatefulWidget {
 
 class _AddtripState extends State<Addtrip> {
   DateTime? _selectedDate;
+  String? _tripName;
+  DateTime? _startDate;
+  DateTime? _endDate;
+  final List<Trip> _trips = [
+    Trip('Colombo'),
+    Trip('Kandy'),
+    Trip('USA'),
+  ];
+
+  List<Trip> _filteredTrips = [];
+  final TextEditingController _controller = TextEditingController();
+  
+  get database => null;
+
+  // void fetchTripData() async {
+  //   // Fetch the trip data 
+  //   var tripData =
+  //       await database.getTripData(); // Replace with actual database 
+
+  //   // Update the state 
+  //   setState(() {
+  //     _tripName = tripData.name;
+  //     _startDate = tripData.startDate;
+  //     _endDate = tripData.endDate;
+  //   });
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   fetchTripData();
+  // }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != _selectedDate)
+      setState(() {
+        _selectedDate = picked;
+      });
+  }
+
+  void _addTrip(String name) {
+    setState(() {
+      _trips.add(Trip(name));
+      _filteredTrips = _trips;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +82,25 @@ class _AddtripState extends State<Addtrip> {
           child: Column(
             children: <Widget>[
               // Two images
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
+                  const Padding(
                       padding: EdgeInsets.only(left: 20.0, bottom: 40),
                       child: CircleAvatar(
                         radius: 20,
                         backgroundImage: AssetImage('assets/logo.png'),
                       )),
                   Padding(
-                    padding: EdgeInsets.only(right: 20.0, bottom: 40),
-                    child: CircleAvatar(
-                      radius: 20, // adjust the size as needed
-                      backgroundImage: AssetImage('assets/profile_pic.png'),
+                    padding: const EdgeInsets.only(right: 20.0, bottom: 40),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/settings');
+                      },
+                      child: const CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage('assets/profile_pic.png'),
+                      ),
                     ),
                   ),
                 ],
@@ -53,7 +116,7 @@ class _AddtripState extends State<Addtrip> {
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.w400,
-                      height: 1, // height should be greater than 0
+                      height: 1,
                     ),
                   ),
                 ),
@@ -69,7 +132,7 @@ class _AddtripState extends State<Addtrip> {
                       color: const Color(0xFF909090),
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      height: 1.5, // height should be greater than 0
+                      height: 1.5,
                     ),
                   ),
                 ),
@@ -95,6 +158,17 @@ class _AddtripState extends State<Addtrip> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: TextField(
+                            controller: _controller,
+                            onChanged: (value) {
+                              setState(() {
+                                // ignore: no_leading_underscores_for_local_identifiers
+                                var _filteredTrips = _trips
+                                    .where((trip) => trip.name
+                                        .toLowerCase()
+                                        .contains(value.toLowerCase()))
+                                    .toList();
+                              });
+                            },
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Search here',
@@ -134,7 +208,7 @@ class _AddtripState extends State<Addtrip> {
                       left: 0,
                       right: 0,
                       child: Container(
-                          height: 65,
+                          height: 70,
                           decoration: const BoxDecoration(
                             color: Colors.black45,
                             borderRadius: BorderRadius.only(
@@ -150,9 +224,9 @@ class _AddtripState extends State<Addtrip> {
                                   const SizedBox(width: 5),
                                   Container(
                                     margin:
-                                        const EdgeInsets.only(left: 10, top: 4),
+                                        const EdgeInsets.only(left: 10, top: 8),
                                     child: Text(
-                                      'Add Trip',
+                                      _tripName ?? 'Add Trip',
                                       style: GoogleFonts.poppins(
                                         color: Colors.white,
                                         fontSize: 24.0,
@@ -167,16 +241,37 @@ class _AddtripState extends State<Addtrip> {
                               Container(
                                 margin: const EdgeInsets.only(left: 16),
                                 child: Row(children: <Widget>[
-                                  
                                   Container(
-                                    margin:
-                                        const EdgeInsets.only(top: 1),
-                                    child: Text(
-                                      'Set date',
-                                      style: GoogleFonts.poppins(
-                                        color: Colors.white,
-                                        fontSize: 10.0,
-                                      ),
+                                    margin: const EdgeInsets.only(top: 1),
+                                    child: Row(
+                                      // Changed from Column to Row
+                                      children: [
+                                        Text(
+                                          _startDate != null
+                                              ? DateFormat('yyyy-MM-dd')
+                                                  .format(_startDate!)
+                                              : 'Set date',
+                                          style: GoogleFonts.poppins(
+                                            color: Colors.white,
+                                            fontSize: 10.0,
+                                          ),
+                                        ),
+
+                                        const SizedBox(
+                                            width:
+                                                10), // Add space between the texts
+
+                                        Text(
+                                          _endDate != null
+                                              ? DateFormat('yyyy-MM-dd')
+                                                  .format(_endDate!)
+                                              : 'Set date',
+                                          style: GoogleFonts.poppins(
+                                            color: Colors.white,
+                                            fontSize: 10.0,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ]),

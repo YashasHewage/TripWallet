@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:app/components/my_textfield.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class Signupperinfo extends StatelessWidget {
@@ -8,6 +11,28 @@ class Signupperinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final firstname = TextEditingController();
+    final lastname = TextEditingController();
+    final dob = TextEditingController();
+
+    void _saveUserData() async {
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      //get values from user
+      String firstName = firstname.text;
+      String lastName = lastname.text;
+      String dateOfBirth = dob.text;
+      String email = FirebaseAuth.instance.currentUser!.email!;
+
+      //adding user data to firestore
+      await firestore.collection('users').add({
+        'firstName': firstName,
+        'lastName': lastName,
+        'dateOfBirth': dateOfBirth,
+        'email': email,
+      });
+      Navigator.pushNamed(context, '/login');
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -37,15 +62,24 @@ class Signupperinfo extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   children: [
                     //first name text field
-                    MyTextField(hintText: 'First name', obscureText: false),
+                    MyTextField(
+                        controller: firstname,
+                        hintText: 'First name',
+                        obscureText: false),
                     SizedBox(height: 40),
 
                     //Last name text field
-                    MyTextField(hintText: 'Last name', obscureText: false),
+                    MyTextField(
+                        controller: lastname,
+                        hintText: 'Last name',
+                        obscureText: false),
                     SizedBox(height: 40),
 
                     //date of birth text field
-                    MyTextField(hintText: 'Date of birth', obscureText: false),
+                    MyTextField(
+                        controller: dob,
+                        hintText: 'Date of birth',
+                        obscureText: false),
                     SizedBox(height: 40),
                   ],
                 ),
@@ -55,7 +89,7 @@ class Signupperinfo extends StatelessWidget {
                 alignment: Alignment.center,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/concat');
+                    _saveUserData();
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(

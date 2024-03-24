@@ -2,6 +2,8 @@
 
 import 'package:app/Models/expence.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 
 class ExpenceTile extends StatelessWidget {
@@ -11,57 +13,85 @@ class ExpenceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: const Color.fromRGBO(195, 207, 230, 1),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor: CategoryColor[expence.category],
-                  radius: 30,
-                  child: Icon(
-                    CategoryIcons[expence.category],
-                    color: Colors.white,
-                    size: 35,
-                  ),
-                ),
-                //title
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    expence.title,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Color(0xFF213660), fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Spacer(),
-                //amount
-                Column(
-                  children: [
-                    Text(
-                      expence.amount.toStringAsFixed(2),
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Color(0xFF213660),
-                          fontWeight: FontWeight.bold),
+    return Container(
+      margin: const EdgeInsets.only(right:20,left:20),
+      decoration: BoxDecoration(
+        border: Border(
+        
+          bottom: BorderSide(
+            color: Colors.grey, 
+            width: 1.0,
+          ),
+        ),
+      ),
+      child: Card(
+        elevation: 0, 
+        margin: const EdgeInsets.symmetric(horizontal: 0.0), 
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: CategoryColor[expence.category],
+                    radius: 20,
+                    child: Icon(
+                      CategoryIcons[expence.category],
+                      color: Colors.white,
+                      size: 18,
                     ),
-                    //date
-                    SizedBox(height: 5),
-                    Text(
-                      expence.getFormatedDate,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                  ),
+                  //title
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(
+                      expence.title,
+                      style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: Color.fromARGB(255, 29, 29, 29), fontWeight: FontWeight.w400, fontSize: 20),
+                      ),
                     ),
-                  ],
-                ),
-              ],
-            )
-          ],
+                  ),
+                  Spacer(),
+                  //amount
+                  Container(
+                    margin: const EdgeInsets.only(right:0),
+                    child: Column(
+                      children: [
+                        Text(
+                          expence.amount.toStringAsFixed(2),
+                          style: GoogleFonts.poppins(
+                            textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: Color.fromARGB(255, 29, 29, 29),
+                              fontWeight: FontWeight.w400,
+                              fontSize:20
+                            ),
+                          ),
+                        ),
+                        //date
+                        SizedBox(height: 5),
+                        Text(
+                          expence.getFormatedDate,
+                          style: GoogleFonts.poppins(
+                            textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: const Color.fromARGB(255, 129, 129, 129),
+                              fontWeight: FontWeight.w400,
+                              fontSize:12
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,10 +1,81 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:app/components/my_textfield.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Signupcon extends StatelessWidget {
-  const Signupcon({super.key});
+class Signupcon extends StatefulWidget {
+  const Signupcon({Key? key}) : super(key: key);
+
+  @override
+  State<Signupcon> createState() => _SignupconState();
+}
+
+class _SignupconState extends State<Signupcon> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
+  Future<void> _saveUserData(String userId) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    // Get values from user
+    String email = emailController.text;
+
+    // Adding user data to firestore
+    await firestore.collection('users').doc(userId).set({
+      'email': email,
+    });
+  }
+
+  Future<void> register() async {
+    // Check if passwords match
+    if (passwordController.text.trim() !=
+        confirmPasswordController.text.trim()) {
+      _showErrorDialog("Error", "Passwords do not match.");
+      return;
+    }
+
+    // Check if password is at least 6 characters long
+    if (passwordController.text.trim().length < 6) {
+      _showErrorDialog("Error", "Password must be at least 6 characters long.");
+      return;
+    }
+
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      String userId = userCredential.user!.uid;
+      await _saveUserData(userId);
+      Navigator.pushNamed(context, '/person');
+    } catch (e) {
+      print("Error: ${e.toString()}");
+      _showErrorDialog("Error", "Failed to create account. Please try again.");
+    }
+  }
+
+  void _showErrorDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,26 +105,36 @@ class Signupcon extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 25),
-                //emai text feild
+                // Email text field
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MyTextField(hintText: 'Email', obscureText: false),
+                    MyTextField(
+                      controller: emailController,
+                      hintText: 'Email',
+                      obscureText: false,
+                    ),
                     SizedBox(height: 40),
-                    //contact number text feild
-                    MyTextField(hintText: 'Password', obscureText: true),
+                    // Password text field
+                    MyTextField(
+                      controller: passwordController,
+                      hintText: 'Password',
+                      obscureText: true,
+                    ),
                     SizedBox(height: 40),
-                    MyTextField(hintText: "Confirm Password", obscureText: true)
+                    MyTextField(
+                      controller: confirmPasswordController,
+                      hintText: "Confirm Password",
+                      obscureText: true,
+                    ),
                   ],
                 ),
                 Spacer(),
-                //next button
+                // Next button
                 Align(
                   alignment: Alignment.center,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/expencespage');
-                    },
+                    onPressed: register,
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
@@ -75,7 +156,7 @@ class Signupcon extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
 
-                //Aleady have an account
+                // Already have an account
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -86,14 +167,15 @@ class Signupcon extends StatelessWidget {
                     SizedBox(width: 8),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/loginpage');
+                        Navigator.pushNamed(context, '/login');
                       },
                       child: Text(
                         'Log in',
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.blue,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
