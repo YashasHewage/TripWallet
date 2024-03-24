@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:app/components/my_textfield.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class Signupperinfo extends StatelessWidget {
@@ -11,6 +14,24 @@ class Signupperinfo extends StatelessWidget {
     final firstname = TextEditingController();
     final lastname = TextEditingController();
     final dob = TextEditingController();
+
+    void _saveUserData() async {
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      //get values from user
+      String firstName = firstname.text;
+      String lastName = lastname.text;
+      String dateOfBirth = dob.text;
+      String email = FirebaseAuth.instance.currentUser!.email!;
+
+      //adding user data to firestore
+      await firestore.collection('users').add({
+        'firstName': firstName,
+        'lastName': lastName,
+        'dateOfBirth': dateOfBirth,
+        'email': email,
+      });
+      Navigator.pushNamed(context, '/login');
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -68,7 +89,7 @@ class Signupperinfo extends StatelessWidget {
                 alignment: Alignment.center,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/concat');
+                    _saveUserData();
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(
