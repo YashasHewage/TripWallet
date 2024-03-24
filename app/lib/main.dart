@@ -2,6 +2,7 @@
 
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
+import 'package:app/pages/add_budget.dart';
 import 'package:app/pages/addtrip_page.dart';
 //import 'package:app/pages/addnewtrip_page.dart';
 //import 'package:app/pages/addtrip_popup.dart';
