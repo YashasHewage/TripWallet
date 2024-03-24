@@ -2,6 +2,7 @@
 
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
+import 'package:app/pages/add_budget.dart';
 import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/language_set.dart';
@@ -15,17 +16,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-Future<void> main() async {
+void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-        '/': (context) => const Addtrip(),
+        '/addbudget': (context) => BudgetPage(totalBudget: ''),
+        '/addtrip': (context) => const Addtrip(),
         '/settings': (context) => const ProfilePage(),
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
