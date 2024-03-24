@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, prefer_const_constructors, file_names, camel_case_types, non_constant_identifier_names
 
 import 'package:app/Models/expence.dart';
+import 'package:app/pages/default_addtrip.dart';
 import 'package:app/widgets/add_new_expence.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -173,15 +174,18 @@ class _Expences_StateState extends State<ExpencesState> {
                 Padding(
                   padding: EdgeInsets.only(
                       top: 50.0,
-                      left:
-                          20), 
-                  child: CircleAvatar(
-                    radius: 16.0, 
-                    backgroundColor:
-                        Colors.white, 
-                    child: Icon(
-                      Icons.home_outlined, 
-                      color: Colors.black,
+                      left: 20), 
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/addtrip');
+                    },
+                    child: CircleAvatar(
+                      radius: 16.0, 
+                      backgroundColor: Colors.white, 
+                      child: Icon(
+                        Icons.home_outlined, 
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),

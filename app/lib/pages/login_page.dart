@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
     if (mounted) {
-      Navigator.pushNamed(context, '/expencespage');
+      Navigator.pushNamed(context, '/addtrip');
     }
   }
 
