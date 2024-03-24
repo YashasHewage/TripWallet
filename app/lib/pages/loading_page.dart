@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
+              import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,51 +11,79 @@ class loading extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 45),
+          padding: const EdgeInsets.only( top:60,bottom: 30),
           child: Column(
             children: [
-              Center(child: Image.asset('assets/loading.png')),
-              Text(
-                "Seamless travel ",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              Center(
+                child: Container(
+                  width: 350, // Set the width as per your requirement
+                  height: 350, // Set the height as per your requirement
+                  child: Image.asset('assets/loading.png'),
+                ),
               ),
-              Text(
-                "money management",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              SizedBox(height: 10),
-              Text(
-                " Sit back, relax, and get ready for a stress-",
-                style: TextStyle(fontSize: 15),
-              ),
-              Text(
-                "free financial journey with our app",
-                style: TextStyle(fontSize: 15),
-              ),
-              Spacer(),
+
+                            Text(
+                              "Seamless travel ",
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w600, 
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              "money management",
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w600, 
+                                fontSize: 20,
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Container(
+                              margin: EdgeInsets.only(top: 30, left: 30, right: 30), 
+                              child: Text(
+                                " Sit back, relax, and get ready for a stress-",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 5), 
+                              child: Text(
+                                "free financial journey with our app",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
               //next button
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/login');
-                  },
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+              Container(
+                margin: EdgeInsets.only(top: 70), 
+                child: Align(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                        Size(350, 60),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        Color(0xFF213660),
                       ),
                     ),
-                    minimumSize: MaterialStateProperty.all(
-                      Size(350, 60),
+                    child: Text(
+                      "Get Started",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white, 
+                        fontSize: 18,
+                      ),
                     ),
-                    backgroundColor: MaterialStateProperty.all(
-                      Color(0xFF213660),
-                    ),
-                  ),
-                  child: Text(
-                    "Get Started",
-                    style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                 ),
               ),

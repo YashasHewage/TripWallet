@@ -603,12 +603,17 @@ class _AddTripPageState extends State<AddTripPopup> {
         ),
       ),
       // Button to save changes
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Add functionality to save changes
+      floatingActionButton: GestureDetector(
+        onTap: () {
         },
-        label: Text('Save Changes', style: TextStyle(color: Colors.white)),
-        backgroundColor: const Color.fromARGB(255, 12, 61, 102),
+        child: FloatingActionButton.extended(
+          onPressed: () {
+                              Navigator.pushNamed(context, '/expencespage');
+
+          },
+          label: Text('Save Changes', style: TextStyle(color: Colors.white)),
+          backgroundColor: const Color.fromARGB(255, 12, 61, 102),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

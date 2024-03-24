@@ -10,7 +10,7 @@ class MyTextField extends StatefulWidget {
       {super.key,
       required this.hintText,
       required this.obscureText,
-      required this.controller});
+      required this.controller, required TextStyle style});
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
