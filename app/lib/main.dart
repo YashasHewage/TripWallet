@@ -7,7 +7,7 @@ import 'package:app/pages/loading_page.dart';
 
 import 'package:app/pages/default_addtrip.dart';
 
-import 'package:app/pages/home_page.dart';
+
 import 'package:app/pages/language_set.dart';
 
 
@@ -22,9 +22,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-
-
-void main() {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,10 +48,9 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-
-        '/': (context) => const Addtrip(),
+        //'/': (context) => const Addtrip(),
         '/settings': (context) => const ProfilePage(),
-        '/homepage': (context) => const HomePage(),
+        // '/homepage': (context) => const HomePage(),
 
         // '/': (context) => const Addtrip(),
 
