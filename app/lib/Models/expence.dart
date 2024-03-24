@@ -24,7 +24,7 @@ final CategoryIcons = {
 };
 //category color
 final CategoryColor = {
-  Category.food: const Color.fromARGB(255, 46, 105, 9),
+  Category.food: const     Color.fromARGB(255, 62, 141, 12),
   Category.transport: const Color.fromARGB(255, 255, 170, 42),
   Category.grocerry: const Color.fromARGB(255, 80, 200, 255),
   Category.health: const Color.fromARGB(255, 252, 46, 46),
