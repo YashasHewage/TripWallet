@@ -179,9 +179,14 @@ class _Expences_StateState extends State<ExpencesState> {
                     radius: 16.0, // Change this to your desired size
                     backgroundColor:
                         Colors.white, // Change this to your desired color
-                    child: Icon(
-                      Icons.home_outlined, // Change this to your desired icon
-                      color: Colors.black, // Change this to your desired color
+                    child: InkWell(
+                      onTap: () {
+                         Navigator.pushNamed(context, '/addtrip');
+                      },
+                      child: Icon(
+                        Icons.home_outlined, // Change this to your desired icon
+                        color: Colors.black, // Change this to your desired color
+                      ),
                     ),
                   ),
                 ),
