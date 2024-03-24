@@ -171,25 +171,20 @@ class _Expences_StateState extends State<ExpencesState> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: 50.0,
-                      left:
-                          20), 
+                  padding: EdgeInsets.only(top: 50.0, left: 20),
                   child: CircleAvatar(
-                    radius: 16.0, 
+                    radius: 16.0,
                     backgroundColor:
-
                         Colors.white, // Change this to your desired color
                     child: InkWell(
                       onTap: () {
-                         Navigator.pushNamed(context, '/addtrip');
+                        Navigator.pushNamed(context, '/addtrip');
                       },
                       child: Icon(
                         Icons.home_outlined, // Change this to your desired icon
-                        color: Colors.black, // Change this to your desired color
+                        color:
+                            Colors.black, // Change this to your desired color
                       ),
-
-
                     ),
                   ),
                 ),
@@ -281,19 +276,20 @@ class _Expences_StateState extends State<ExpencesState> {
                       ),
                     ),
                   ),
-                  // Column(
-                  //   children: [
-                  //     //total expenses
-                  //     Text(
-                  //       "LKR.${totalCategoryVal.toStringAsFixed(2)}",
-                  //       style: GoogleFonts.poppins(
-                  //         fontSize: 16,
-                  //         color: const Color.fromARGB(255, 255, 255, 255),
-                  //         fontWeight: FontWeight.w600,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  Column(
+                    children: [
+                      //total expenses
+                      Text(
+                        // "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                        "Stats",
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                   Positioned(
                     bottom: 16.0,
                     right: 16.0,
@@ -337,7 +333,7 @@ class _Expences_StateState extends State<ExpencesState> {
                 top: 23,
                 child: GestureDetector(
                   onTap: () {
-                     Navigator.pushNamed(context, '');
+                    Navigator.pushNamed(context, '');
                   },
                   child: Container(
                     width: 500,
@@ -402,7 +398,7 @@ class _Expences_StateState extends State<ExpencesState> {
                         height: 25,
                         child: GestureDetector(
                           onTap: () {
-                          Navigator.pushNamed(context, '/allexpences');
+                            Navigator.pushNamed(context, '/allexpences');
                           },
                           child: Icon(
                             Icons.location_on,
@@ -431,16 +427,16 @@ class _Expences_StateState extends State<ExpencesState> {
                         onTap: () {
                           Navigator.pushNamed(context, '/allexpences');
                         },
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        child: Icon(
-                          Icons.money,
-                          color: Colors.white,
-                          size: 25,
+                        child: Container(
+                          width: 25,
+                          height: 25,
+                          child: Icon(
+                            Icons.money,
+                            color: Colors.white,
+                            size: 25,
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ]),
                 ),
