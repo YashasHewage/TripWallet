@@ -83,7 +83,10 @@ class ProfileMenuOptions extends StatelessWidget {
           const Divider(thickness: 0.1),
           ProfileListTile(
             title: 'About us',
-            onTap: () => {},
+            onTap: () {
+                             Navigator.pushNamed(context, '/aboutus');
+
+            },
           ),
           const Divider(thickness: 0.1),
           ProfileListTile(
