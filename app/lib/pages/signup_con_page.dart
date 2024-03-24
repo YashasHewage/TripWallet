@@ -4,6 +4,9 @@ import 'package:app/components/my_textfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
 
 class Signupcon extends StatefulWidget {
   const Signupcon({Key? key}) : super(key: key);
@@ -113,6 +116,7 @@ class _SignupconState extends State<Signupcon> {
                       controller: emailController,
                       hintText: 'Email',
                       obscureText: false,
+                      style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
                     ),
                     SizedBox(height: 40),
                     // Password text field
@@ -120,12 +124,17 @@ class _SignupconState extends State<Signupcon> {
                       controller: passwordController,
                       hintText: 'Password',
                       obscureText: true,
+                      style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
                     ),
                     SizedBox(height: 40),
+
+                    // ...
+
                     MyTextField(
                       controller: confirmPasswordController,
                       hintText: "Confirm Password",
                       obscureText: true,
+                      style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
                     ),
                   ],
                 ),

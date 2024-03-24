@@ -19,12 +19,12 @@ class _AllExpencesState extends State<AllExpences> {
   final List<ExpenceModel> _expenceList = [
     ExpenceModel(
         title: "rice",
-        amount: 500,
+        amount: 122,
         date: DateTime.now(),
         category: Category.food),
     ExpenceModel(
         title: "travel",
-        amount: 100,
+        amount: 122,
         date: DateTime.now(),
         category: Category.transport),
   ];

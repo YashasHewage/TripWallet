@@ -86,13 +86,13 @@ class _AddtripState extends State<Addtrip> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   const Padding(
-                      padding: EdgeInsets.only(left: 20.0, bottom: 40),
+                      padding: EdgeInsets.only(left: 20.0),
                       child: CircleAvatar(
                         radius: 20,
                         backgroundImage: AssetImage('assets/logo.png'),
                       )),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20.0, bottom: 40),
+                    padding: const EdgeInsets.only(right: 20.0),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, '/settings');
@@ -106,9 +106,8 @@ class _AddtripState extends State<Addtrip> {
                 ],
               ),
 
-              // Hello Text
               Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20, top: 30),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -141,7 +140,7 @@ class _AddtripState extends State<Addtrip> {
               // Search bar
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 20, bottom: 40),
+                    left: 20, right: 20, top: 20, bottom: 30),
                 child: Row(
                   children: <Widget>[
                     Expanded(
@@ -191,100 +190,196 @@ class _AddtripState extends State<Addtrip> {
               ),
               // Add trip card
               GestureDetector(
-  onTap: () {
-    Navigator.pushNamed(context, '/expencespage');
-  },
-  child: Container(
-    height: 197,
-    margin: const EdgeInsets.only(
-        left: 20.0, right: 20.0, bottom: 20.0),
-    decoration: BoxDecoration(
-      image: const DecorationImage(
-        image: AssetImage('assets/dashboard_image1.png'),
-        fit: BoxFit.cover,
-      ),
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-    child: Stack(
-      children: <Widget>[
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            height: 70,
-            decoration: const BoxDecoration(
-              color: Colors.black45,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20.0),
-                bottomRight: Radius.circular(20.0),
-              ),
-            ),
-            child: Column(
-              children: <Widget>[
-                //add trip
-                Row(
-                  children: <Widget>[
-                    const SizedBox(width: 5),
-                    Container(
-                      margin:
-                          const EdgeInsets.only(left: 10, top: 8),
-                      child: Text(
-                        _tripName ?? 'Add Trip',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 24.0,
-                        ),
-                      ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/expencespage');
+                },
+                child: Container(
+                  height: 197,
+                  margin: const EdgeInsets.only(
+                      left: 20.0, right: 20.0, bottom: 20.0),
+                  decoration: BoxDecoration(
+                    image: const DecorationImage(
+                      image: AssetImage('assets/trip1.png'),
+                      fit: BoxFit.cover,
                     ),
-                  ],
-                ),
-
-                //date
-
-                Container(
-                  margin: const EdgeInsets.only(left: 16),
-                  child: Row(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Stack(
                     children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(top: 1),
-                        child: Row(
-                          children: [
-                            Text(
-                              _startDate != null
-                                  ? DateFormat('yyyy-MM-dd')
-                                      .format(_startDate!)
-                                  : 'Set date',
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontSize: 10.0,
-                              ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 70,
+                          decoration: const BoxDecoration(
+                            color: Colors.black45,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0),
                             ),
-                            const SizedBox(width: 10),
-                            Text(
-                              _endDate != null
-                                  ? DateFormat('yyyy-MM-dd')
-                                      .format(_endDate!)
-                                  : 'Set date',
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontSize: 10.0,
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              //add trip
+                              Row(
+                                children: <Widget>[
+                                  const SizedBox(width: 5),
+                                  Container(
+                                    margin:
+                                        const EdgeInsets.only(left: 10, top: 8),
+                                    child: Text(
+                                      _tripName ?? 'Japan',
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontSize: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
+
+                              //date
+
+                              Container(
+                                margin: const EdgeInsets.only(left: 16),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 1),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            _startDate != null
+                                                ? DateFormat('yyyy-MM-dd')
+                                                    .format(_startDate!)
+                                                : '2022-04-04',
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 10.0,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 20),
+                                          Text(
+                                            _endDate != null
+                                                ? DateFormat('yyyy-MM-dd')
+                                                    .format(_endDate!)
+                                                : '2002-04-04',
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 10.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  ),
-),
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/addtrippopup');
+                },
+                child: Container(
+                  height: 197,
+                  margin: const EdgeInsets.only(
+                      left: 20.0, right: 20.0, bottom: 20.0),
+                  decoration: BoxDecoration(
+                    image: const DecorationImage(
+                      image: AssetImage('assets/dashboard_image1.png'),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 70,
+                          decoration: const BoxDecoration(
+                            color: Colors.black45,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0),
+                            ),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              //add trip
+                              Row(
+                                children: <Widget>[
+                                  const SizedBox(width: 5),
+                                  Container(
+                                    margin:
+                                        const EdgeInsets.only(left: 10, top: 8),
+                                    child: Text(
+                                      _tripName ?? 'Add Trip',
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontSize: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              //date
+
+                              Container(
+                                margin: const EdgeInsets.only(left: 16),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 1),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            _startDate != null
+                                                ? DateFormat('yyyy-MM-dd')
+                                                    .format(_startDate!)
+                                                : 'Set date',
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 10.0,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            _endDate != null
+                                                ? DateFormat('yyyy-MM-dd')
+                                                    .format(_endDate!)
+                                                : 'Set date',
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 10.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

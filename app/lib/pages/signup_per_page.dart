@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class Signupperinfo extends StatelessWidget {
   const Signupperinfo({super.key});
@@ -44,9 +46,14 @@ class Signupperinfo extends StatelessWidget {
               SizedBox(height: 18),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
-                child: Text('Sign up',
-                    style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+
+                // ...
+
+                                child: Text('Sign up',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 30, 
+                                      fontWeight: FontWeight.bold
+                                    )),
               ),
               SizedBox(
                 height: 8,
@@ -63,23 +70,28 @@ class Signupperinfo extends StatelessWidget {
                   children: [
                     //first name text field
                     MyTextField(
-                        controller: firstname,
-                        hintText: 'First name',
-                        obscureText: false),
+                      controller: firstname,
+                      hintText: 'First name',
+                      obscureText: false,
+                      style: GoogleFonts.poppins(), // Add this line
+                    ),
                     SizedBox(height: 40),
 
                     //Last name text field
                     MyTextField(
-                        controller: lastname,
-                        hintText: 'Last name',
-                        obscureText: false),
+                      controller: lastname,
+                      hintText: 'Last name',
+                      obscureText: false,
+                      style: GoogleFonts.poppins(), // Add this line
+                    ),
                     SizedBox(height: 40),
 
                     //date of birth text field
                     MyTextField(
-                        controller: dob,
-                        hintText: 'Date of birth',
-                        obscureText: false),
+                      controller: dob,
+                      hintText: 'Date of birth',
+                      obscureText: false,
+                      style: GoogleFonts.poppins()), // Add this line
                     SizedBox(height: 40),
                   ],
                 ),

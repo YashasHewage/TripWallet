@@ -18,16 +18,16 @@ class ExpencesState extends StatefulWidget {
 class _Expences_StateState extends State<ExpencesState> {
   //expences list
   final List<ExpenceModel> _expenceList = [
-    ExpenceModel(
-        title: "rice",
-        amount: 500,
-        date: DateTime.now(),
-        category: Category.food),
-    ExpenceModel(
-        title: "travel",
-        amount: 100,
-        date: DateTime.now(),
-        category: Category.transport),
+    // ExpenceModel(
+    //     title: "rice",
+    //     amount: 500,
+    //     date: DateTime.now(),
+    //     category: Category.food),
+    // ExpenceModel(
+    //     title: "travel",
+    //     amount: 100,
+    //     date: DateTime.now(),
+    //     category: Category.transport),
   ];
   //Pie chart
   Map<String, double> dataMap = {
@@ -162,7 +162,7 @@ class _Expences_StateState extends State<ExpencesState> {
                   margin: EdgeInsets.only(bottom: 15),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/dashboard_image1.png'),
+                      image: AssetImage('assets/trip1.png'),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.only(
@@ -193,7 +193,7 @@ class _Expences_StateState extends State<ExpencesState> {
                   margin: EdgeInsets.only(right: 15.0, top: 70),
                   child: Center(
                     child: Text(
-                      'Paris',
+                      'Japan',
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w500,
                           fontSize: 24,
@@ -281,11 +281,11 @@ class _Expences_StateState extends State<ExpencesState> {
                     children: [
                       //total expenses
                       Text(
-                        "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                        'Stats',
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           color: const Color.fromARGB(255, 255, 255, 255),
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
