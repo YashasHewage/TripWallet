@@ -1,4 +1,6 @@
 //create a uniqe id using uuid package
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
@@ -20,11 +22,11 @@ final CategoryIcons = {
 };
 //category color
 final CategoryColor = {
-  Category.food: Colors.green[900],
-  Category.transport: Colors.yellow[800],
-  Category.grocerry: Colors.lightBlue[300],
-  Category.health: Colors.red[900],
-  Category.other: Colors.blueAccent[200],
+  Category.food: const Color.fromARGB(255, 46, 105, 9),
+  Category.transport: const Color.fromARGB(255, 255, 170, 42),
+  Category.grocerry: const Color.fromARGB(255, 80, 200, 255),
+  Category.health: const Color.fromARGB(255, 252, 46, 46),
+  Category.other: const Color.fromARGB(255, 35, 81, 167),
 };
 
 class ExpenceModel {
