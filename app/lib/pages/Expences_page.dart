@@ -142,7 +142,7 @@ class _Expences_StateState extends State<ExpencesState> {
   }
 
   List<Color> pieChartColors = [
-    Color.fromARGB(255, 46, 105, 9),
+    Color.fromARGB(255, 62, 141, 12),
     Color.fromARGB(255, 255, 170, 42),
     Color.fromARGB(255, 80, 200, 255),
     Color.fromARGB(255, 252, 46, 46),
@@ -174,14 +174,22 @@ class _Expences_StateState extends State<ExpencesState> {
                   padding: EdgeInsets.only(
                       top: 50.0,
                       left:
-                          20), // Adjust this value to move the CircleAvatar down
+                          20), 
                   child: CircleAvatar(
-                    radius: 16.0, // Change this to your desired size
+                    radius: 16.0, 
                     backgroundColor:
+
                         Colors.white, // Change this to your desired color
-                    child: Icon(
-                      Icons.home_outlined, // Change this to your desired icon
-                      color: Colors.black, // Change this to your desired color
+                    child: InkWell(
+                      onTap: () {
+                         Navigator.pushNamed(context, '/addtrip');
+                      },
+                      child: Icon(
+                        Icons.home_outlined, // Change this to your desired icon
+                        color: Colors.black, // Change this to your desired color
+                      ),
+
+
                     ),
                   ),
                 ),
@@ -215,7 +223,7 @@ class _Expences_StateState extends State<ExpencesState> {
                         Container(
                           margin: EdgeInsets.only(left: 15.0),
                           child: Text(
-                            'wallet balance ',
+                            'Total Expenses',
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
                               fontSize: 15,
@@ -327,10 +335,15 @@ class _Expences_StateState extends State<ExpencesState> {
               Positioned(
                 left: 0,
                 top: 23,
-                child: Container(
-                  width: 500,
-                  height: 68,
-                  decoration: BoxDecoration(color: Color(0xFFA3A3A3)),
+                child: GestureDetector(
+                  onTap: () {
+                     Navigator.pushNamed(context, '');
+                  },
+                  child: Container(
+                    width: 500,
+                    height: 68,
+                    decoration: BoxDecoration(color: Color(0xFFA3A3A3)),
+                  ),
                 ),
               ),
               Positioned(
@@ -387,10 +400,15 @@ class _Expences_StateState extends State<ExpencesState> {
                       child: Container(
                         width: 25,
                         height: 25,
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                          size: 25,
+                        child: GestureDetector(
+                          onTap: () {
+                          Navigator.pushNamed(context, '/allexpences');
+                          },
+                          child: Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                            size: 25,
+                          ),
                         ),
                       ),
                     ),
@@ -409,6 +427,10 @@ class _Expences_StateState extends State<ExpencesState> {
                     Positioned(
                       left: 0,
                       top: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/allexpences');
+                        },
                       child: Container(
                         width: 25,
                         height: 25,
@@ -418,6 +440,7 @@ class _Expences_StateState extends State<ExpencesState> {
                           size: 25,
                         ),
                       ),
+                    ),
                     ),
                   ]),
                 ),
@@ -434,13 +457,18 @@ class _Expences_StateState extends State<ExpencesState> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        child: Icon(
-                          Icons.pie_chart,
-                          color: Colors.white,
-                          size: 25,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/allexpences');
+                        },
+                        child: Container(
+                          width: 25,
+                          height: 25,
+                          child: Icon(
+                            Icons.pie_chart,
+                            color: Colors.white,
+                            size: 25,
+                          ),
                         ),
                       ),
                     ),
@@ -459,13 +487,18 @@ class _Expences_StateState extends State<ExpencesState> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        child: Icon(
-                          Icons.wallet,
-                          color: Colors.white,
-                          size: 25,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/addbudget');
+                        },
+                        child: Container(
+                          width: 25,
+                          height: 25,
+                          child: Icon(
+                            Icons.wallet,
+                            color: Colors.white,
+                            size: 25,
+                          ),
                         ),
                       ),
                     ),
