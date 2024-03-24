@@ -146,7 +146,7 @@ class _Expences_StateState extends State<ExpencesState> {
     Color.fromARGB(255, 255, 170, 42),
     Color.fromARGB(255, 80, 200, 255),
     Color.fromARGB(255, 252, 46, 46),
- Color.fromARGB(255, 35, 81, 167),
+    Color.fromARGB(255, 35, 81, 167),
   ];
 
   @override
@@ -273,19 +273,19 @@ class _Expences_StateState extends State<ExpencesState> {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      //total expenses
-                      Text(
-                        "LKR.${totalCategoryVal.toStringAsFixed(2)}",
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Column(
+                  //   children: [
+                  //     //total expenses
+                  //     Text(
+                  //       "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                  //       style: GoogleFonts.poppins(
+                  //         fontSize: 16,
+                  //         color: const Color.fromARGB(255, 255, 255, 255),
+                  //         fontWeight: FontWeight.w600,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   Positioned(
                     bottom: 16.0,
                     right: 16.0,

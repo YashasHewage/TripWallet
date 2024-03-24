@@ -49,7 +49,7 @@ class _MyTextFieldState extends State<MyTextField> {
                     });
                   },
                   child: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    _obscureText ? Icons.visibility_off : Icons.visibility,
                     color: Color(0xFF595A5D),
                   ),
                 )
