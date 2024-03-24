@@ -142,7 +142,7 @@ class _Expences_StateState extends State<ExpencesState> {
   }
 
   List<Color> pieChartColors = [
-    Color.fromARGB(255, 46, 105, 9),
+    Color.fromARGB(255, 62, 141, 12),
     Color.fromARGB(255, 255, 170, 42),
     Color.fromARGB(255, 80, 200, 255),
     Color.fromARGB(255, 252, 46, 46),
@@ -174,14 +174,14 @@ class _Expences_StateState extends State<ExpencesState> {
                   padding: EdgeInsets.only(
                       top: 50.0,
                       left:
-                          20), // Adjust this value to move the CircleAvatar down
+                          20), 
                   child: CircleAvatar(
-                    radius: 16.0, // Change this to your desired size
+                    radius: 16.0, 
                     backgroundColor:
-                        Colors.white, // Change this to your desired color
+                        Colors.white, 
                     child: Icon(
-                      Icons.home_outlined, // Change this to your desired icon
-                      color: Colors.black, // Change this to your desired color
+                      Icons.home_outlined, 
+                      color: Colors.black,
                     ),
                   ),
                 ),
