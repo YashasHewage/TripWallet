@@ -178,18 +178,10 @@ class _Expences_StateState extends State<ExpencesState> {
                   child: CircleAvatar(
                     radius: 16.0, 
                     backgroundColor:
-
-                        Colors.white, // Change this to your desired color
-                    child: InkWell(
-                      onTap: () {
-                         Navigator.pushNamed(context, '/addtrip');
-                      },
-                      child: Icon(
-                        Icons.home_outlined, // Change this to your desired icon
-                        color: Colors.black, // Change this to your desired color
-                      ),
-
-
+                        Colors.white, 
+                    child: Icon(
+                      Icons.home_outlined, 
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -402,7 +394,7 @@ class _Expences_StateState extends State<ExpencesState> {
                         height: 25,
                         child: GestureDetector(
                           onTap: () {
-                          Navigator.pushNamed(context, '/allexpences');
+                          Navigator.pushNamed(context, '/addtrippopup');
                           },
                           child: Icon(
                             Icons.location_on,
@@ -459,7 +451,7 @@ class _Expences_StateState extends State<ExpencesState> {
                       top: 0,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/allexpences');
+                          Navigator.pushNamed(context, '/expencespage');
                         },
                         child: Container(
                           width: 25,
@@ -507,7 +499,7 @@ class _Expences_StateState extends State<ExpencesState> {
               ),
             ],
           ),
-        )
+        ),
 
         // onPressed: () => _openAddExpensesOverlay(context),
 

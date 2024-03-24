@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+
 import 'package:app/Models/expence.dart';
 import 'package:app/widgets/add_new_expence.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class AllExpences extends StatefulWidget {
@@ -128,28 +130,39 @@ class _AllExpencesState extends State<AllExpences> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+    return Scaffold(backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/expencespage');
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            size: 30,
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'All Expenses',
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.start, 
+            ),
           ),
-        ),
+          centerTitle: false,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/expencespage');
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              size: 18,
+            ),
+          ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(0.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "All Expences",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
+
+                           
               ExpenceList(
                 expenceList: _expenceList,
                 onDeletedExpence: OnDeletedExpence,
@@ -159,38 +172,186 @@ class _AllExpencesState extends State<AllExpences> {
         ),
       ),
       //bottom navigation icons
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          //home icon
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/homepage');
-            },
-            icon: Icon(Icons.home),
-            iconSize: 35,
+        bottomNavigationBar: Container(
+          height: 91,
+          child: Stack(
+            children: [
+              Positioned(
+                left: 0,
+                top: 23,
+                child: GestureDetector(
+                  onTap: () {
+                     Navigator.pushNamed(context, '');
+                  },
+                  child: Container(
+                    width: 500,
+                    height: 68,
+                    decoration: BoxDecoration(color: Color(0xFFA3A3A3)),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 165,
+                top: 0,
+                child: Container(
+                  width: 60,
+                  height: 61.44,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: OvalBorder(),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 171,
+                top: 7,
+                child: GestureDetector(
+                  onTap: () => _openAddExpensesOverlay(context),
+                  child: Container(
+                    width: 47.20,
+                    height: 48.33,
+                    decoration: ShapeDecoration(
+                      color: Color(0xFF2B3A58),
+                      shape: OvalBorder(),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '+',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 37,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: GestureDetector(
+                          onTap: () {
+                          Navigator.pushNamed(context, '/addtrippopup');
+                          },
+                          child: Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                            size: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Positioned(
+                left: 110,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/allexpences');
+                        },
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.money,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                    ),
+                  ]),
+                ),
+              ),
+              Positioned(
+                left: 251,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/expencespage');
+                        },
+                        child: Container(
+                          width: 25,
+                          height: 25,
+                          child: Icon(
+                            Icons.pie_chart,
+                            color: Colors.white,
+                            size: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Positioned(
+                left: 336,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/addbudget');
+                        },
+                        child: Container(
+                          width: 25,
+                          height: 25,
+                          child: Icon(
+                            Icons.wallet,
+                            color: Colors.white,
+                            size: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+            ],
           ),
-
-          //add icon
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Color(0xFF213660)),
-            child: IconButton(
-              onPressed: () => _openAddExpensesOverlay(context),
-              icon: Icon(Icons.add),
-              iconSize: 35,
-              color: Colors.white,
-            ),
-          ),
-          //profile icon
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-            iconSize: 35,
-          ),
-        ],
-      ),
+        )
     );
   }
 }

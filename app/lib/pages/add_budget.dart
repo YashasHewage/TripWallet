@@ -11,7 +11,7 @@ class BudgetPage extends StatefulWidget {
 }
 
 class _BudgetPageState extends State<BudgetPage> {
-  String? _selectedCurrency = 'USD';
+  String? _selectedCurrency = 'LKR';
   final TextEditingController _budgetController = TextEditingController();
   List<String> budgets = []; // Maintain a list of budget values
 
@@ -19,7 +19,8 @@ class _BudgetPageState extends State<BudgetPage> {
   String calculateTotalBudget() {
     double total = 0;
     for (String budget in budgets) {
-      total += double.tryParse(budget.substring(3)) ?? 0; // Parse and sum the numeric part of each budget
+      total += double.tryParse(budget.substring(3)) ??
+          0; // Parse and sum the numeric part of each budget
     }
     return total.toStringAsFixed(2); // Format total with 2 decimal places
   }
@@ -44,7 +45,8 @@ class _BudgetPageState extends State<BudgetPage> {
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10),
+              margin:
+                  const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -70,14 +72,175 @@ class _BudgetPageState extends State<BudgetPage> {
                           _selectedCurrency = newValue!;
                         });
                       },
-                      items: <String>['LKR', 'USD', 'EUR', 'GBP', 'JPY']
-                          .map<DropdownMenuItem<String>>((String value) {
+                      items: <String>[
+                        'USD',
+                        'EUR',
+                        'JPY',
+                        'GBP',
+                        'AUD',
+                        'CAD',
+                        'CHF',
+                        'CNY',
+                        'SEK',
+                        'NZD',
+                        'MXN',
+                        'SGD',
+                        'HKD',
+                        'NOK',
+                        'KRW',
+                        'TRY',
+                        'RUB',
+                        'INR',
+                        'BRL',
+                        'ZAR',
+                        'SAR',
+                        'AED',
+                        'CZK',
+                        'IDR',
+                        'MYR',
+                        'CLP',
+                        'PHP',
+                        'COP',
+                        'DKK',
+                        'ILS',
+                        'PLN',
+                        'THB',
+                        'TWD',
+                        'ARS',
+                        'IRR',
+                        'VND',
+                        'ISK',
+                        'EGP',
+                        'NGN',
+                        'KES',
+                        'UAH',
+                        'PEN',
+                        'LKR',
+                        'KWD',
+                        'QAR',
+                        'BDT',
+                        'TWD',
+                        'ZAR',
+                        'HUF',
+                        'BHD',
+                        'OMR',
+                        'RON',
+                        'GTQ',
+                        'HRK',
+                        'CRC',
+                        'UYU',
+                        'PAB',
+                        'BOB',
+                        'DOP',
+                        'PYG',
+                        'NIO',
+                        'HNL',
+                        'ISK',
+                        'GEL',
+                        'UZS',
+                        'BAM',
+                        'MKD',
+                        'BWP',
+                        'NAD',
+                        'JMD',
+                        'AMD',
+                        'ALL',
+                        'TND',
+                        'GHS',
+                        'AZN',
+                        'FJD',
+                        'BZD',
+                        'BND',
+                        'JOD',
+                        'ZMW',
+                        'LBP',
+                        'SCR',
+                        'MUR',
+                        'AWG',
+                        'BBD',
+                        'BMD',
+                        'BSD',
+                        'TTD',
+                        'XCD',
+                        'FKP',
+                        'SBD',
+                        'AUD',
+                        'TVD',
+                        'KID',
+                        'NPR',
+                        'XCD',
+                        'CVE',
+                        'MVR',
+                        'SZL',
+                        'UZS',
+                        'MRU',
+                        'LYD',
+                        'SYP',
+                        'LAK',
+                        'PAB',
+                        'CUP',
+                        'XCD',
+                        'GYD',
+                        'FJD',
+                        'XCD',
+                        'XCD',
+                        'XCD',
+                        'GBP',
+                        'PRB',
+                        'RUB',
+                        'WST',
+                        'LSL',
+                        'MWK',
+                        'MRO',
+                        'CDF',
+                        'SHP',
+                        'TJS',
+                        'KGS',
+                        'MGA',
+                        'ERN',
+                        'CUP',
+                        'SRD',
+                        'YER',
+                        'KMF',
+                        'KPW',
+                        'LYD',
+                        'SYP',
+                        'LAK',
+                        'PAB',
+                        'CUP',
+                        'XCD',
+                        'GYD',
+                        'FJD',
+                        'XCD',
+                        'XCD',
+                        'XCD',
+                        'GBP',
+                        'PRB',
+                        'RUB',
+                        'WST',
+                        'LSL',
+                        'MWK',
+                        'MRO',
+                        'CDF',
+                        'SHP',
+                        'TJS',
+                        'KGS',
+                        'MGA',
+                        'ERN',
+                        'KPW',
+                        'TWD',
+                        'RSD',
+                        'SDG',
+                        'SSP',
+                      ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(
                             value,
                             style: TextStyle(
-                              color: _selectedCurrency == value ? Colors.black : Colors.black,
+                              color: _selectedCurrency == value
+                                  ? Colors.black
+                                  : Colors.black,
                             ),
                           ),
                         );
@@ -104,7 +267,7 @@ class _BudgetPageState extends State<BudgetPage> {
               child: TextField(
                 controller: _budgetController,
                 keyboardType: TextInputType.number,
-                cursorHeight: 18.0,
+                cursorHeight: 20.0,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Enter your budget',
@@ -114,7 +277,8 @@ class _BudgetPageState extends State<BudgetPage> {
                   ),
                   contentPadding: const EdgeInsets.only(bottom: 12, left: 15),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color.fromARGB(255, 48, 48, 48), width: 1.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 48, 48, 48), width: 1.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
@@ -127,8 +291,10 @@ class _BudgetPageState extends State<BudgetPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      budgets.add(_selectedCurrency! + _budgetController.text); // Add new budget to the list
-                      _budgetController.clear(); // Clear the text field after adding
+                      budgets.add(_selectedCurrency! +
+                          _budgetController.text); // Add new budget to the list
+                      _budgetController
+                          .clear(); // Clear the text field after adding
                     });
                   },
                   style: ButtonStyle(
@@ -143,7 +309,8 @@ class _BudgetPageState extends State<BudgetPage> {
                     backgroundColor: MaterialStateProperty.all(
                       const Color(0xFF213660),
                     ),
-                    padding: MaterialStateProperty.all(const EdgeInsets.only(left: 50, right: 50, top: 10, bottom: 10)),
+                    padding: MaterialStateProperty.all(const EdgeInsets.only(
+                        left: 50, right: 50, top: 10, bottom: 10)),
                   ),
                   child: Text(
                     "Add Budget",
@@ -184,7 +351,8 @@ class _BudgetPageState extends State<BudgetPage> {
                               ),
                             ),
                             Text(
-                              budgets[index], // Display the budget from the list
+                              budgets[
+                                  index], // Display the budget from the list
                               style: GoogleFonts.poppins(fontSize: 14.0),
                             ),
                           ],
