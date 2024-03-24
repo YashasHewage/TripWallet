@@ -2,6 +2,10 @@
 
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
+import 'package:app/pages/addtrip_page.dart';
+//import 'package:app/pages/addnewtrip_page.dart';
+//import 'package:app/pages/addtrip_popup.dart';
+import 'package:app/pages/addtrippopup_page.dart';
 import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/language_set.dart';
@@ -47,6 +51,8 @@ class MyApp extends StatelessWidget {
         '/concat': (context) => const Signupcon(),
         '/profileEdit': (context) => const ProfileEdit(), 
         '/languages': (context) => const LanguageSettingsPage(),
+        '/addnewtrip':(context) => const AddTripPage(),
+        '/addtrippopup':(context) => const AddTripPopup(),
       }
     );
   }
