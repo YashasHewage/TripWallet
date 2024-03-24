@@ -178,10 +178,18 @@ class _Expences_StateState extends State<ExpencesState> {
                   child: CircleAvatar(
                     radius: 16.0, 
                     backgroundColor:
-                        Colors.white, 
-                    child: Icon(
-                      Icons.home_outlined, 
-                      color: Colors.black,
+
+                        Colors.white, // Change this to your desired color
+                    child: InkWell(
+                      onTap: () {
+                         Navigator.pushNamed(context, '/addtrip');
+                      },
+                      child: Icon(
+                        Icons.home_outlined, // Change this to your desired icon
+                        color: Colors.black, // Change this to your desired color
+                      ),
+
+
                     ),
                   ),
                 ),
