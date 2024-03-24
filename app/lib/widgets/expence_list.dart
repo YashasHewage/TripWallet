@@ -16,7 +16,7 @@ class ExpenceList extends StatelessWidget {
         itemCount: expenceList.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 0.0),
             child: Dismissible(
               key: ValueKey(expenceList[index]),
               direction: DismissDirection.endToStart,

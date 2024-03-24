@@ -5,8 +5,7 @@ import 'package:app/widgets/add_new_expence.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:google_fonts/google_fonts.dart';
 
 class ExpencesState extends StatefulWidget {
   const ExpencesState({super.key});
@@ -143,134 +142,342 @@ class _Expences_StateState extends State<ExpencesState> {
   }
 
   List<Color> pieChartColors = [
-    Colors.green[900]!,
-    Colors.yellow[800]!,
-    Colors.lightBlue[300]!,
-    Colors.red[900]!,
-    Colors.blueAccent[200]!,
+    Color.fromARGB(255, 46, 105, 9),
+    Color.fromARGB(255, 255, 170, 42),
+    Color.fromARGB(255, 80, 200, 255),
+    Color.fromARGB(255, 252, 46, 46),
+ Color.fromARGB(255, 35, 81, 167),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: 200,
-            child: Image.asset('assets/tripcard.png'),
-          ),
-          //pie chart
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                height: 300,
-                width: 400,
-                decoration: BoxDecoration(
-                  color: Color(0xFF314874),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 5.0,
-                  ),
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: PieChart(
-                    swapAnimationDuration: const Duration(milliseconds: 700),
-                    PieChartData(
-                      sections: List.generate(
-                        dataMap.length,
-                        (index) => PieChartSectionData(
-                          color: pieChartColors[index],
-                          value: dataMap.values.elementAt(index),
-                          title: '',
-                        ),
-                      ),
-                      sectionsSpace: 0,
+        body: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 198,
+                  margin: EdgeInsets.only(bottom: 15),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/dashboard_image1.png'),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(23),
+                      bottomRight: Radius.circular(23),
                     ),
                   ),
                 ),
-              ),
-              Column(
-                children: [
-                  //total expenses
-                  Text(
-                    "LKR.${totalCategoryVal.toStringAsFixed(2)}",
-                    style: TextStyle(
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 50.0,
+                      left:
+                          20), // Adjust this value to move the CircleAvatar down
+                  child: CircleAvatar(
+                    radius: 16.0, // Change this to your desired size
+                    backgroundColor:
+                        Colors.white, // Change this to your desired color
+                    child: Icon(
+                      Icons.home_outlined, // Change this to your desired icon
+                      color: Colors.black, // Change this to your desired color
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 15.0, top: 70),
+                  child: Center(
+                    child: Text(
+                      'Paris',
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 24,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 35,
+                  left: 20,
+                  child: Container(
+                    width: 351,
+                    height: 60,
+                    decoration: ShapeDecoration(
                       color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(left: 15.0),
+                          child: Text(
+                            'wallet balance ',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: 15.0),
+                          child: Text(
+                            "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            //pie chart
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: 250,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF314874),
+                      borderRadius: BorderRadius.circular(23),
+                    ),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 25.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: PieChart(
+                          swapAnimationDuration:
+                              const Duration(milliseconds: 700),
+                          PieChartData(
+                            sections: List.generate(
+                              dataMap.length,
+                              (index) => PieChartSectionData(
+                                color: pieChartColors[index],
+                                value: dataMap.values.elementAt(index),
+                                title: '',
+                                radius: 25,
+                              ),
+                            ),
+                            sectionsSpace: 0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      //total expenses
+                      Text(
+                        "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    bottom: 16.0,
+                    right: 16.0,
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          // Add onPressed logic here
+                          Navigator.pushNamed(context, '/allexpences');
+                        },
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
               ),
+            ),
+
+            ExpenceList(
+              expenceList: _expenceList,
+              onDeletedExpence: OnDeletedExpence,
+            ),
+          ],
+        ),
+        //bottom navigation icons
+        bottomNavigationBar: Container(
+          height: 91,
+          child: Stack(
+            children: [
               Positioned(
-                bottom: 16.0,
-                right: 16.0,
+                left: 0,
+                top: 23,
                 child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
+                  width: 500,
+                  height: 68,
+                  decoration: BoxDecoration(color: Color(0xFFA3A3A3)),
+                ),
+              ),
+              Positioned(
+                left: 165,
+                top: 0,
+                child: Container(
+                  width: 60,
+                  height: 61.44,
+                  decoration: ShapeDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
+                    shape: OvalBorder(),
                   ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.black,
+                ),
+              ),
+              Positioned(
+                left: 171,
+                top: 7,
+                child: GestureDetector(
+                  onTap: () => _openAddExpensesOverlay(context),
+                  child: Container(
+                    width: 47.20,
+                    height: 48.33,
+                    decoration: ShapeDecoration(
+                      color: Color(0xFF2B3A58),
+                      shape: OvalBorder(),
                     ),
-                    onPressed: () {
-                      // Add onPressed logic here
-                      Navigator.pushNamed(context, '/allexpences');
-                    },
-                    color: Colors.white,
+                    child: Center(
+                      child: Text(
+                        '+',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
+                      ),
+                    ),
                   ),
+                ),
+              ),
+              Positioned(
+                left: 37,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.location_on,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Positioned(
+                left: 110,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.money,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Positioned(
+                left: 251,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.pie_chart,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Positioned(
+                left: 336,
+                top: 44,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Stack(children: [
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.wallet,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                  ]),
                 ),
               ),
             ],
           ),
+        )
 
-          ExpenceList(
-            expenceList: _expenceList,
-            onDeletedExpence: OnDeletedExpence,
-          ),
-        ],
-      ),
-      //bottom navigation icons
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          //home icon
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/homepage');
-            },
-            icon: Icon(Icons.home),
-            iconSize: 35,
-          ),
+        // onPressed: () => _openAddExpensesOverlay(context),
 
-          //add icon
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Color(0xFF213660)),
-            child: IconButton(
-              onPressed: () => _openAddExpensesOverlay(context),
-              icon: Icon(Icons.add),
-              iconSize: 35,
-              color: Colors.white,
-            ),
-          ),
-          //profile icon
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-            iconSize: 35,
-          ),
-        ],
-      ),
-    );
+        );
   }
 }

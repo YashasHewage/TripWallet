@@ -1,5 +1,6 @@
 // ignore_for_file: use_super_parameters, unused_local_variable, unused_field, unused_import, curly_braces_in_flow_control_structures, unused_element
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart'; // Import the 'intl' package
 
@@ -81,20 +82,25 @@ class _AddtripState extends State<Addtrip> {
           child: Column(
             children: <Widget>[
               // Two images
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
+                  const Padding(
                       padding: EdgeInsets.only(left: 20.0, bottom: 40),
                       child: CircleAvatar(
                         radius: 20,
                         backgroundImage: AssetImage('assets/logo.png'),
                       )),
                   Padding(
-                    padding: EdgeInsets.only(right: 20.0, bottom: 40),
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/profile_pic.png'),
+                    padding: const EdgeInsets.only(right: 20.0, bottom: 40),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/settings');
+                      },
+                      child: const CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage('assets/profile_pic.png'),
+                      ),
                     ),
                   ),
                 ],
