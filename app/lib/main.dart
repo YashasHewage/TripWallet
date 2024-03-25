@@ -2,6 +2,7 @@
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
 import 'package:app/pages/add_budget.dart';
+import 'package:app/pages/addtrip_data.dart';
 import 'package:app/pages/addtrip_page.dart';
 import 'package:app/pages/addtrippopup_page.dart';
 import 'package:app/pages/loading_page.dart';
@@ -26,6 +27,8 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
         '/profileEdit': (context) => const ProfileEdit(), 
         '/languages': (context) => const LanguageSettingsPage(),
         '/addnewtrip':(context) => const AddTripPage(),
-        '/addtrippopup':(context) => const AddTripPopup(),
+        '/addtrip_data':(context) => const TripForm(),
       }
     );
   }
