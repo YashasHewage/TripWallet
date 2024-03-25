@@ -2,6 +2,7 @@
 
 
 import 'package:app/Models/expence.dart';
+import 'package:app/pages/Expences_page.dart';
 import 'package:app/widgets/add_new_expence.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +18,12 @@ class AllExpences extends StatefulWidget {
 
 class _AllExpencesState extends State<AllExpences> {
   final List<ExpenceModel> _expenceList = [
-    ExpenceModel(
-        title: "rice",
-        amount: 122,
-        date: DateTime.now(),
-        category: Category.food),
-    ExpenceModel(
-        title: "travel",
-        amount: 122,
-        date: DateTime.now(),
-        category: Category.transport),
+    // ExpenceModel(
+    //     title: "rice",
+    //     amount: 500,
+    //     date: DateTime.now(),
+    //     category: Category.food),
+    
   ];
   // remove a expence
   void OnDeletedExpence(ExpenceModel expence) {
@@ -147,8 +144,9 @@ class _AllExpencesState extends State<AllExpences> {
           centerTitle: false,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/expencespage');
-            },
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const ExpencesState()));
+                      },
             icon: Icon(
               Icons.arrow_back,
               size: 18,

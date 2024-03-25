@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:app/pages/Expences_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class AddTripPage extends StatefulWidget {
@@ -89,532 +93,508 @@ class _AddTripPageState extends State<AddTripPage> {
   }
 
   //list of countries
-  String? _selectedCountry;
-
-  List<String> countries = [
-    // List of countries
-    'Afghanistan',
-'Albania',
-'Algeria',
-'Andorra',
-'Angola',
-'Antigua and Barbuda',
-'Argentina',
-'Armenia',
-'Australia',
-'Austria',
-'Azerbaijan',
-'Bahamas',
-'Bahrain',
-'Bangladesh',
-'Barbados',
-'Belarus',
-'Belgium',
-'Belize',
-'Benin',
-'Bhutan',
-'Bolivia',
-'Bosnia and Herzegovina',
-'Botswana',
-'Brazil',
-'Brunei',
-'Bulgaria',
-'Burkina Faso',
-'Burundi',
-'Cabo Verde',
-'Cambodia',
-'Cameroon',
-'Canada',
-'Central African Republic',
-'Chad',
-'Chile',
-'China',
-'Colombia',
-'Comoros',
-'Congo, Democratic Republic of the',
-'Congo, Republic of the',
-'Costa Rica',
-'Croatia',
-'Cuba',
-'Cyprus',
-'Czech Republic',
-'Denmark',
-'Djibouti',
-'Dominica',
-'Dominican Republic',
-'Ecuador',
-'Egypt',
-'El Salvador',
-'Equatorial Guinea',
-'Eritrea',
-'Estonia',
-'Eswatini',
-'Ethiopia',
-'Fiji',
-'Finland',
-'France',
-'Gabon',
-'Gambia',
-'Georgia',
-'Germany',
-'Ghana',
-'Greece',
-'Grenada',
-'Guatemala',
-'Guinea',
-'Guinea-Bissau',
-'Guyana',
-'Haiti',
-'Honduras',
-'Hungary',
-'Iceland',
-'India',
-'Indonesia',
-'Iran',
-'Iraq',
-'Ireland',
-'Israel',
-'Italy',
-'Jamaica',
-'Japan',
-'Jordan',
-'Kazakhstan',
-'Kenya',
-'Kiribati',
-'Korea, North',
-'Korea, South',
-'Kosovo',
-'Kuwait',
-'Kyrgyzstan',
-'Laos',
-'Latvia',
-'Lebanon',
-'Lesotho',
-'Liberia',
-'Libya',
-'Liechtenstein',
-'Lithuania',
-'Luxembourg',
-'Madagascar',
-'Malawi',
-'Malaysia',
-'Maldives',
-'Mali',
-'Malta',
-'Marshall Islands',
-'Mauritania',
-'Mauritius',
-'Mexico',
-'Micronesia',
-'Moldova',
-'Monaco',
-'Mongolia',
-'Montenegro',
-'Morocco',
-'Mozambique',
-'Myanmar',
-'Namibia',
-'Nauru',
-'Nepal',
-'Netherlands',
-'New Zealand',
-'Nicaragua',
-'Niger',
-'Nigeria',
-'North Macedonia',
-'Norway',
-'Oman',
-'Pakistan',
-'Palau',
-'Palestine',
-'Panama',
-'Papua New Guinea',
-'Paraguay',
-'Peru',
-'Philippines',
-'Poland',
-'Portugal',
-'Qatar',
-'Romania',
-'Russia',
-'Rwanda',
-'Saint Kitts and Nevis',
-'Saint Lucia',
-'Saint Vincent and the Grenadines',
-'Samoa',
-'San Marino',
-'Sao Tome and Principe',
-'Saudi Arabia',
-'Senegal',
-'Serbia',
-'Seychelles',
-'Sierra Leone',
-'Singapore',
-'Slovakia',
-'Slovenia',
-'Solomon Islands',
-'Somalia',
-'South Africa',
-'South Sudan',
-'Spain',
-'Sri Lanka',
-'Sudan',
-'Suriname',
-'Sweden',
-'Switzerland',
-'Syria',
-'Taiwan',
-'Tajikistan',
-'Tanzania',
-'Thailand',
-'Timor-Leste',
-'Togo',
-'Tonga',
-'Trinidad and Tobago',
-'Tunisia',
-'Turkey',
-'Turkmenistan',
-'Tuvalu',
-'Uganda',
-'Ukraine',
-'United Arab Emirates',
-'United Kingdom',
-'United States',
-'Uruguay',
-'Uzbekistan',
-'Vanuatu',
-'Vatican City',
-'Venezuela',
-'Vietnam',
-'Yemen',
-'Zambia',
-'Zimbabwe',
-  ];
 
   String? _selectedCurrency;
 
-  List<String> currency = [
-    // List of currencies
-    'USD',
-    'EUR',
-    'JPY',
-    'GBP',
-    'AUD',
-    'CAD',
-    'CHF',
-    'CNY',
-    'SEK',
-    'NZD',
-    'MXN',
-    'SGD',
-    'HKD',
-    'NOK',
-    'KRW',
-    'TRY',
-    'RUB',
-    'INR',
-    'BRL',
-    'ZAR',
-    'SAR',
-    'AED',
-    'CZK',
-    'IDR',
-    'MYR',
-    'CLP',
-    'PHP',
-    'COP',
-    'DKK',
-    'ILS',
-    'PLN',
-    'THB',
-    'TWD',
-    'ARS',
-    'IRR',
-    'VND',
-    'ISK',
-    'EGP',
-    'NGN',
-    'KES',
-    'UAH',
-    'PEN',
-    'LKR',
-    'KWD',
-    'QAR',
-    'BDT',
-    'TWD',
-    'ZAR',
-    'HUF',
-    'BHD',
-    'OMR',
-    'RON',
-    'GTQ',
-    'HRK',
-    'CRC',
-    'UYU',
-    'PAB',
-    'BOB',
-    'DOP',
-    'PYG',
-    'NIO',
-    'HNL',
-    'ISK',
-    'GEL',
-    'UZS',
-    'BAM',
-    'MKD',
-    'BWP',
-    'NAD',
-    'JMD',
-    'AMD',
-    'ALL',
-    'TND',
-    'GHS',
-    'AZN',
-    'FJD',
-    'BZD',
-    'BND',
-    'JOD',
-    'ZMW',
-    'LBP',
-    'SCR',
-    'MUR',
-    'AWG',
-    'BBD',
-    'BMD',
-    'BSD',
-    'TTD',
-    'XCD',
-    'FKP',
-    'SBD',
-    'AUD',
-    'TVD',
-    'KID',
-    'NPR',
-    'XCD',
-    'CVE',
-    'MVR',
-    'SZL',
-    'UZS',
-    'MRU',
-    'LYD',
-    'SYP',
-    'LAK',
-    'PAB',
-    'CUP',
-    'XCD',
-    'GYD',
-    'FJD',
-    'XCD',
-    'XCD',
-    'XCD',
-    'GBP',
-    'PRB',
-    'RUB',
-    'WST',
-    'LSL',
-    'MWK',
-    'MRO',
-    'CDF',
-    'SHP',
-    'TJS',
-    'KGS',
-    'MGA',
-    'ERN',
-    'CUP',
-    'SRD',
-    'YER',
-    'KMF',
-    'KPW',
-    'LYD',
-    'SYP',
-    'LAK',
-    'PAB',
-    'CUP',
-    'XCD',
-    'GYD',
-    'FJD',
-    'XCD',
-    'XCD',
-    'XCD',
-    'GBP',
-    'PRB',
-    'RUB',
-    'WST',
-    'LSL',
-    'MWK',
-    'MRO',
-    'CDF',
-    'SHP',
-    'TJS',
-    'KGS',
-    'MGA',
-    'ERN',
-    'KPW',
-    'TWD',
-    'RSD',
-    'SDG',
-    'SSP',
-  ];
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _budgetController = TextEditingController();
+  final TextEditingController _startDateController = TextEditingController();
+  final TextEditingController _endDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: Image.asset('assets/tripcard.png'),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Add functionality for the button here
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Colors.white, // Set background color to black
-                    ),
-                    child: Text(
-                      'Edit Cover',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
+        child: Stack(
+          children: [
+            Container(
+              height: 198,
+              margin: const EdgeInsets.only(bottom: 15),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/tripimage.png.jpg'),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(23),
+                  bottomRight: Radius.circular(23),
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
-                'Country',
-                style: TextStyle(fontSize: 18.0),
-              ),
-              SizedBox(height: 8),
-              DropdownButtonFormField<String>(
-                value: _selectedCountry,
-                hint: Text("Select Country"),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    _selectedCountry = newValue;
-                  });
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 50.0, left: 20),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const ExpencesState()));
                 },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                child: CircleAvatar(
+                  radius: 16.0,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.arrow_back_rounded,
+                    color: Colors.black,
+                  ),
                 ),
-                items: countries.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
-              SizedBox(height: 20),
-              Text(
-                'Currency',
-                style: TextStyle(fontSize: 18.0),
-              ),
-              SizedBox(height: 8),
-              DropdownButtonFormField<String>(
-                value: _selectedCurrency,
-                hint: Text("Select Currency"),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    _selectedCurrency = newValue;
-                  });
-                },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-                ),
-                items: currency.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Start Date:', style: TextStyle(fontSize: 16)),
-                  Expanded(
-                    child: Center(
-                      child: Text(
-                        '${DateFormat('yyyy-MM-dd').format(_startDate)}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20, left: 20, top: 220),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    TextFormField(
+                      controller: _titleController,
+                      cursorColor: const Color.fromARGB(255, 63, 63, 63),
+                      cursorHeight: 20,
+                      decoration: InputDecoration(
+                        hintText: 'Trip Title',
+                        hintStyle: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        errorStyle: const TextStyle(
+                            color: Color.fromARGB(255, 255, 17, 0)),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                      ),
+                      style: GoogleFonts.poppins(),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a title';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    // Currency Text
+                    Text(
+                      'Currency',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => _selectStartDate(context),
-                    child: Text('Select Start Date'),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('End Date:', style: TextStyle(fontSize: 16)),
-                  Expanded(
-                    child: Center(
-                      child: Text(
-                        '${DateFormat('yyyy-MM-dd').format(_endDate)}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                    // Currency Dropdown
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(10, 3),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => _selectEndDate(context),
-                    child: Text('  Select End Date'),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Budget : $currencyValue',
-                        style: TextStyle(fontSize: 20.0),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          editCurrencyValue();
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _selectedCurrency = null;
+                          });
                         },
-                        child: Text('Edit'),
+                        child: _selectedCurrency == null
+                            ? Container(
+                                height:50,
+                                child: DropdownButtonFormField<String>(
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  // hint: Text(
+                                  //   'Select the currency',
+                                  //   style: GoogleFonts.poppins(),
+                                  // ),
+                                  value: _selectedCurrency,
+                                  items: <String>[
+                                    'USD',
+                                    'EUR',
+                                    'JPY',
+                                    'GBP',
+                                    'AUD',
+                                    'CAD',
+                                    'CHF',
+                                    'CNY',
+                                    'SEK',
+                                    'NZD',
+                                    'MXN',
+                                    'SGD',
+                                    'HKD',
+                                    'NOK',
+                                    'KRW',
+                                    'TRY',
+                                    'RUB',
+                                    'INR',
+                                    'BRL',
+                                    'ZAR',
+                                    'SAR',
+                                    'AED',
+                                    'CZK',
+                                    'IDR',
+                                    'MYR',
+                                    'CLP',
+                                    'PHP',
+                                    'COP',
+                                    'DKK',
+                                    'ILS',
+                                    'PLN',
+                                    'THB',
+                                    'TWD',
+                                    'ARS',
+                                    'IRR',
+                                    'VND',
+                                    'ISK',
+                                    'EGP',
+                                    'NGN',
+                                    'KES',
+                                    'UAH',
+                                    'PEN',
+                                    'LKR',
+                                    'KWD',
+                                    'QAR',
+                                    'BDT',
+                                    'TWD',
+                                    'ZAR',
+                                    'HUF',
+                                    'BHD',
+                                    'OMR',
+                                    'RON',
+                                    'GTQ',
+                                    'HRK',
+                                    'CRC',
+                                    'UYU',
+                                    'PAB',
+                                    'BOB',
+                                    'DOP',
+                                    'PYG',
+                                    'NIO',
+                                    'HNL',
+                                    'ISK',
+                                    'GEL',
+                                    'UZS',
+                                    'BAM',
+                                    'MKD',
+                                    'BWP',
+                                    'NAD',
+                                    'JMD',
+                                    'AMD',
+                                    'ALL',
+                                    'TND',
+                                    'GHS',
+                                    'AZN',
+                                    'FJD',
+                                    'BZD',
+                                    'BND',
+                                    'JOD',
+                                    'ZMW',
+                                    'LBP',
+                                    'SCR',
+                                    'MUR',
+                                    'AWG',
+                                    'BBD',
+                                    'BMD',
+                                    'BSD',
+                                    'TTD',
+                                    'XCD',
+                                    'FKP',
+                                    'SBD',
+                                    'AUD',
+                                    'TVD',
+                                    'KID',
+                                    'NPR',
+                                    'XCD',
+                                    'CVE',
+                                    'MVR',
+                                    'SZL',
+                                    'UZS',
+                                    'MRU',
+                                    'LYD',
+                                    'SYP',
+                                    'LAK',
+                                    'PAB',
+                                    'CUP',
+                                    'XCD',
+                                    'GYD',
+                                    'FJD',
+                                    'XCD',
+                                    'XCD',
+                                    'XCD',
+                                    'GBP',
+                                    'PRB',
+                                    'RUB',
+                                    'WST',
+                                    'LSL',
+                                    'MWK',
+                                    'MRO',
+                                    'CDF',
+                                    'SHP',
+                                    'TJS',
+                                    'KGS',
+                                    'MGA',
+                                    'ERN',
+                                    'CUP',
+                                    'SRD',
+                                    'YER',
+                                    'KMF',
+                                    'KPW',
+                                    'LYD',
+                                    'SYP',
+                                    'LAK',
+                                    'PAB',
+                                    'CUP',
+                                    'XCD',
+                                    'GYD',
+                                    'FJD',
+                                    'XCD',
+                                    'XCD',
+                                    'XCD',
+                                    'GBP',
+                                    'PRB',
+                                    'RUB',
+                                    'WST',
+                                    'LSL',
+                                    'MWK',
+                                    'MRO',
+                                    'CDF',
+                                    'SHP',
+                                    'TJS',
+                                    'KGS',
+                                    'MGA',
+                                    'ERN',
+                                    'KPW',
+                                    'TWD',
+                                    'RSD',
+                                    'SDG',
+                                    'SSP',
+                                  ].map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      _selectedCurrency = newValue;
+                                    });
+                                  },
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please select a currency';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(
+                                  '$_selectedCurrency',
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: const Color.fromARGB(
+                                        255, 104, 103, 103),
+                                  ),
+                                ),
+                              ),
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  // Button to save changes
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add functionality to save changes
-                    },
-                    child:
-                        Text('Delete', style: TextStyle(color: Colors.white)),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
                     ),
-                  ),
-                ],
+
+                    // Budget Text Field
+                    TextFormField(
+                      controller: _budgetController,
+                      cursorColor: const Color.fromARGB(255, 63, 63, 63),
+                      cursorHeight: 20,
+                      decoration: InputDecoration(
+                        labelText: 'Budget',
+                        labelStyle: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        errorStyle: const TextStyle(
+                            color: Color.fromARGB(255, 255, 17, 0)),
+                        enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        errorBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedErrorBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                      ),
+                      style: GoogleFonts.poppins(),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a budget';
+                        }
+                        return null;
+                      },
+                    ),
+                    // Start Date Picker
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Start Date',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              final DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime(2100),
+                              );
+                              if (pickedDate != null) {
+                                setState(() {
+                                  _startDateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(pickedDate);
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content:
+                                          Text('Please select a start date')),
+                                );
+                              }
+                            },
+                            child: _startDateController.text.isEmpty
+                                ? const Icon(Icons.calendar_today,
+                                    size: 20,
+                                    color: Color.fromARGB(255, 75, 75, 75))
+                                : Text(_startDateController.text),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // End Date Picker
+                    Container(
+                      margin: EdgeInsets.only(top: 10), // Set the top margin here
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'End Date',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              final DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime(2100),
+                              );
+                              if (pickedDate != null) {
+                                setState(() {
+                                  _endDateController.text =
+                                      DateFormat('yyyy-MM-dd').format(pickedDate);
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Please select an end date')),
+                                );
+                              }
+                            },
+                            child: _endDateController.text.isEmpty
+                                ? const Icon(Icons.calendar_today,
+                                    size: 20,
+                                    color: Color.fromARGB(255, 75, 75, 75))
+                                : Text(_endDateController.text),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.only(top: 50, right: 250),
+                      // Set the width of the button here
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onPressed: () {
+                          // TODO: Add delete functionality here
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 11, bottom: 11),
+                          child: Text(
+                            'Delete',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 70),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: ElevatedButton(
+                          onPressed: () {
+
+                          },
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            minimumSize: MaterialStateProperty.all(
+                              const Size(350, 60),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                              const Color(0xFF213660),
+                            ),
+                          ),
+                          child: Text(
+                            "Update",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 20),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
