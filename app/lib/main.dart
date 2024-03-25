@@ -19,7 +19,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
@@ -28,36 +27,35 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData && snapshot.data != null) {
-              return const loading();
-            } else {
-              return const LoginPage();
-            }
-          }),
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          return const loading();
+        } else {
+          return const LoginPage();
+        }
+      }),
       routes: {
-
         '/addbudget': (context) => BudgetPage(totalBudget: ''),
-        '/addtrip': (context) => const Addtrip(),
+        '/addtrip': (context) => const Addtrip(tripDataList: []),
         '/settings': (context) => const ProfilePage(),
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => const AllExpences(),
         '/login': (context) => const LoginPage(),
         '/person': (context) => const Signupperinfo(),
         '/concat': (context) => const Signupcon(),
-        '/profileEdit': (context) => const ProfileEdit(), 
+        '/profileEdit': (context) => const ProfileEdit(),
         '/languages': (context) => const LanguageSettingsPage(),
-        '/addnewtrip':(context) => const AddTripPage(),
-        '/addtrip_data':(context) => const TripForm(),
-      }
+        '/addnewtrip': (context) => const AddTripPage(),
+        '/addtrip_data': (context) => const TripForm(),
+      },
     );
   }
 }
+
+

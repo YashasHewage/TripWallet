@@ -1,8 +1,10 @@
 // ignore_for_file: unused_element, prefer_const_constructors, file_names, camel_case_types, non_constant_identifier_names
 
 import 'package:app/Models/expence.dart';
+import 'package:app/pages/addtrip_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/widgets/add_new_expence.dart';
+import 'package:app/widgets/all_expences_page.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -147,286 +149,290 @@ class _Expences_StateState extends State<ExpencesState> {
     Color.fromARGB(255, 255, 170, 42),
     Color.fromARGB(255, 80, 200, 255),
     Color.fromARGB(255, 252, 46, 46),
- Color.fromARGB(255, 35, 81, 167),
+    Color.fromARGB(255, 35, 81, 167),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 198,
-                  margin: EdgeInsets.only(bottom: 15),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/trip1.png'),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(23),
-                      bottomRight: Radius.circular(23),
+      body: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: 198,
+                margin: EdgeInsets.only(bottom: 15),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/tripimage.png.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(23),
+                    bottomRight: Radius.circular(23),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 50.0, left: 20),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const Addtrip(
+                              tripDataList: [],
+                            )));
+                  },
+                  child: CircleAvatar(
+                    radius: 16.0,
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      Icons.home_outlined,
+                      color: Colors.black,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: 50.0,
-                      left: 20), 
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/addtrip');
-                    },
-                    child: CircleAvatar(
-                      radius: 16.0, 
-                      backgroundColor: Colors.white, 
-                      child: Icon(
-                        Icons.home_outlined, 
-                        color: Colors.black,
-                      ),
-                    ),
+              ),
+              Container(
+                margin: EdgeInsets.only(right: 15.0, top: 70),
+                child: Center(
+                  child: Text(
+                    'Paris',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,
+                        color: Colors.white),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(right: 15.0, top: 70),
-                  child: Center(
-                    child: Text(
-                      'Japan',
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 24,
-                          color: Colors.white),
+              ),
+              Positioned(
+                bottom: 35,
+                left: 20,
+                child: Container(
+                  width: 351,
+                  height: 60,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 35,
-                  left: 20,
-                  child: Container(
-                    width: 351,
-                    height: 60,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(left: 15.0),
-                          child: Text(
-                            'Total Expenses',
-                            style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 15.0),
-                          child: Text(
-                            "LKR.${totalCategoryVal.toStringAsFixed(2)}",
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            //pie chart
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF314874),
-                      borderRadius: BorderRadius.circular(23),
-                    ),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 25.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: PieChart(
-                          swapAnimationDuration:
-                              const Duration(milliseconds: 700),
-                          PieChartData(
-                            sections: List.generate(
-                              dataMap.length,
-                              (index) => PieChartSectionData(
-                                color: pieChartColors[index],
-                                value: dataMap.values.elementAt(index),
-                                title: '',
-                                radius: 25,
-                              ),
-                            ),
-                            sectionsSpace: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          'Total Expenses',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      //total expenses
-                      Text(
-                        'Stats',
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          fontWeight: FontWeight.w500,
+                      Container(
+                        margin: EdgeInsets.only(right: 15.0),
+                        child: Text(
+                          "LKR.${totalCategoryVal.toStringAsFixed(2)}",
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  Positioned(
-                    bottom: 16.0,
-                    right: 16.0,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.arrow_forward,
-                          color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          //pie chart
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15.0),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF314874),
+                    borderRadius: BorderRadius.circular(23),
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 25.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PieChart(
+                        swapAnimationDuration:
+                            const Duration(milliseconds: 700),
+                        PieChartData(
+                          sections: List.generate(
+                            dataMap.length,
+                            (index) => PieChartSectionData(
+                              color: pieChartColors[index],
+                              value: dataMap.values.elementAt(index),
+                              title: '',
+                              radius: 25,
+                            ),
+                          ),
+                          sectionsSpace: 0,
                         ),
-                        onPressed: () {
-                          // Add onPressed logic here
-                          Navigator.pushNamed(context, '/allexpences');
-                        },
-                        color: Colors.white,
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-
-            ExpenceList(
-              expenceList: _expenceList,
-              onDeletedExpence: OnDeletedExpence,
-            ),
-          ],
-        ),
-        //bottom navigation icons
-        bottomNavigationBar: Container(
-          height: 91,
-          child: Stack(
-            children: [
-              Positioned(
-                left: 0,
-                top: 23,
-                child: GestureDetector(
-                  onTap: () {
-                     Navigator.pushNamed(context, '');
-                  },
+                ),
+                Column(
+                  children: [
+                    //total expenses
+                    Text(
+                      'Stats',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Positioned(
+                  bottom: 16.0,
+                  right: 16.0,
                   child: Container(
-                    width: 500,
-                    height: 68,
-                    decoration: BoxDecoration(color: Color(0xFFA3A3A3)),
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_forward,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const AllExpences()));
+                      },
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                left: 165,
-                top: 0,
+                
+              ],
+            ),
+          ),
+
+          ExpenceList(
+            expenceList: _expenceList,
+            onDeletedExpence: OnDeletedExpence,
+          ),
+        ],
+      ),
+      //bottom navigation icons
+      bottomNavigationBar: Container(
+        height: 91,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              top: 23,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '');
+                },
                 child: Container(
-                  width: 60,
-                  height: 61.44,
+                  width: 500,
+                  height: 68,
+                  decoration: BoxDecoration(color: Color(0xFFA3A3A3)),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 165,
+              top: 0,
+              child: Container(
+                width: 60,
+                height: 61.44,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: OvalBorder(),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 171,
+              top: 7,
+              child: GestureDetector(
+                onTap: () => _openAddExpensesOverlay(context),
+                child: Container(
+                  width: 47.20,
+                  height: 48.33,
                   decoration: ShapeDecoration(
-                    color: Colors.white,
+                    color: Color(0xFF2B3A58),
                     shape: OvalBorder(),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 171,
-                top: 7,
-                child: GestureDetector(
-                  onTap: () => _openAddExpensesOverlay(context),
-                  child: Container(
-                    width: 47.20,
-                    height: 48.33,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFF2B3A58),
-                      shape: OvalBorder(),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '+',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400,
-                          height: 0,
-                        ),
+                  child: Center(
+                    child: Text(
+                      '+',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                        height: 0,
                       ),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 37,
-                top: 44,
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: Stack(children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        child: GestureDetector(
-                          onTap: () {
-                          Navigator.pushNamed(context, '/addtrippopup');
-                          },
-                          child: Icon(
-                            Icons.location_on,
-                            color: Colors.white,
-                            size: 25,
-                          ),
+            ),
+            Positioned(
+              left: 37,
+              top: 44,
+              child: Container(
+                width: 25,
+                height: 25,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(),
+                child: Stack(children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    child: Container(
+                      width: 25,
+                      height: 25,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => const AddTripPage()));
+                        },
+                        child: Icon(
+                          Icons.location_on,
+                          color: Colors.white,
+                          size: 25,
                         ),
                       ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
-              Positioned(
-                left: 110,
-                top: 44,
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: Stack(children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/allexpences');
-                        },
+            ),
+            Positioned(
+              left: 110,
+              top: 44,
+              child: Container(
+                width: 25,
+                height: 25,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(),
+                child: Stack(children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const AllExpences()));
+                      },
                       child: Container(
                         width: 25,
                         height: 25,
@@ -437,76 +443,76 @@ class _Expences_StateState extends State<ExpencesState> {
                         ),
                       ),
                     ),
-                    ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
-              Positioned(
-                left: 251,
-                top: 44,
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: Stack(children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/expencespage');
-                        },
-                        child: Container(
-                          width: 25,
-                          height: 25,
-                          child: Icon(
-                            Icons.pie_chart,
-                            color: Colors.white,
-                            size: 25,
-                          ),
+            ),
+            Positioned(
+              left: 251,
+              top: 44,
+              child: Container(
+                width: 25,
+                height: 25,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(),
+                child: Stack(children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const ExpencesState()));
+                      },
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.pie_chart,
+                          color: Colors.white,
+                          size: 25,
                         ),
                       ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
-              Positioned(
-                left: 336,
-                top: 44,
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: Stack(children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/addbudget');
-                        },
-                        child: Container(
-                          width: 25,
-                          height: 25,
-                          child: Icon(
-                            Icons.wallet,
-                            color: Colors.white,
-                            size: 25,
-                          ),
+            ),
+            Positioned(
+              left: 336,
+              top: 44,
+              child: Container(
+                width: 25,
+                height: 25,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(),
+                child: Stack(children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/addbudget');
+                      },
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        child: Icon(
+                          Icons.wallet,
+                          color: Colors.white,
+                          size: 25,
                         ),
                       ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
+      ),
 
-        // onPressed: () => _openAddExpensesOverlay(context),
-
-        );
+      // onPressed: () => _openAddExpensesOverlay(context),
+    );
   }
 }
