@@ -1,0 +1,370 @@
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class TripForm extends StatefulWidget {
+  const TripForm({Key? key}) : super(key: key);
+
+  @override
+  _TripFormState createState() => _TripFormState();
+}
+
+String? _selectedCurrency;
+
+class _TripFormState extends State<TripForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _budgetController = TextEditingController();
+  final TextEditingController _startDateController = TextEditingController();
+  final TextEditingController _endDateController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Container(
+              height: 198,
+              margin: const EdgeInsets.only(bottom: 15),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/trip1.png'),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(23),
+                  bottomRight: Radius.circular(23),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20, left: 20, top: 220),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    TextFormField(
+                      controller: _titleController,
+                      cursorColor: const Color.fromARGB(255, 63, 63, 63),
+                      cursorHeight: 20,
+                      decoration: InputDecoration(
+                        hintText: 'Trip Title',
+                        hintStyle: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        errorStyle: const TextStyle(
+                            color: Color.fromARGB(255, 255, 17, 0)),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                      ),
+                      style: GoogleFonts.poppins(),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a title';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    // Currency Text
+                    Text(
+                      'Currency',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    // Currency Dropdown
+                    Container(
+  margin: const EdgeInsets.only(top:10),
+  decoration: BoxDecoration(
+    color: const Color.fromARGB(255, 255, 255, 255),
+    borderRadius: BorderRadius.circular(5),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: const Offset(0, 3), // changes position of shadow
+      ),
+    ],
+  ),
+  child: GestureDetector(
+    onTap: () {
+      setState(() {
+        _selectedCurrency = null; // Reset selected currency to null to show the dropdown again
+      });
+    },
+    child: _selectedCurrency == null
+        ? Container(
+            height: 35, // Set the height you want here
+            child: DropdownButtonFormField<String>(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(), 
+              ),
+              hint: const Text('Select the currency'), 
+              value: _selectedCurrency, // Set the value to the selected currency
+              items: <String>['USD', 'EUR', 'JPY', 'GBP', 'AUD', 'CAD']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedCurrency = newValue; // Update the selected currency when the user selects a new one
+                });
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select a currency';
+                }
+                return null;
+              },
+            ),
+          )
+        : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                '$_selectedCurrency',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: const Color.fromARGB(255, 104, 103, 103),
+                
+              ),
+            ),
+          ),
+  ),
+),
+
+
+                    // Budget Text Field
+                    TextFormField(
+                      controller: _budgetController,
+                      cursorColor: const Color.fromARGB(255, 63, 63, 63),
+                      cursorHeight: 20,
+                      decoration: InputDecoration(
+                        labelText: 'Budget',
+                        labelStyle: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        errorStyle: const TextStyle(
+                            color: Color.fromARGB(255, 255, 17, 0)),
+                        enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        errorBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedErrorBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                      ),
+                      style: GoogleFonts.poppins(),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a budget';
+                        }
+                        return null;
+                      },
+                    ),
+                    // Start Date Picker
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Start Date',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight:FontWeight.w500,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                            ),
+                            
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              final DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime(2100),
+                              );
+                              if (pickedDate != null) {
+                                setState(() {
+                                  _startDateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(pickedDate);
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content:
+                                          Text('Please select a start date')),
+                                );
+                              }
+                            },
+                            child: _startDateController.text.isEmpty
+                                ? const Icon(Icons.calendar_today,
+                                size: 20,
+                                    color: Color.fromARGB(255, 75, 75, 75))
+                                : Text(_startDateController.text),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // End Date Picker
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'End Date',
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () async {
+                            final DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2000),
+                              lastDate: DateTime(2100),
+                            );
+                            if (pickedDate != null) {
+                              setState(() {
+                                _endDateController.text =
+                                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                              });
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text('Please select an end date')),
+                              );
+                            }
+                          },
+                          child: _endDateController.text.isEmpty
+                              ? const Icon(Icons.calendar_today,
+                              size: 20,
+                                  color: Color.fromARGB(255, 75, 75, 75))
+                              : Text(_endDateController.text),
+                        ),
+                      ],
+                    ),
+
+                    Container(
+                margin: const EdgeInsets.only(top:150), 
+                child: Align(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                     onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _saveTrip();
+                        }
+                      },
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                        const Size(350, 60),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color(0xFF213660),
+                      ),
+                    ),
+                    child: Text(
+                      "Save",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white, 
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+                   
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _saveTrip() async {
+    final title = _titleController.text;
+    final budget = _budgetController.text;
+    final currency = _selectedCurrency;
+    final startDate = _startDateController.text;
+    final endDate = _endDateController.text;
+
+    // Access Firestore and save data
+    try {
+      await FirebaseFirestore.instance.collection('trips').add({
+        'title': title,
+        'currency': currency,
+        'budget': budget,
+        'start_date': startDate,
+        'end_date': endDate,
+      });
+      // Show success message or navigate to a new screen
+      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+        content: Row(
+          children: <Widget>[
+            const Icon(Icons.check, color: Colors.green),
+            const SizedBox(width: 20),
+            Text(
+              'Trip saved successfully!',
+              style: GoogleFonts.poppins(), // Set font family to Poppins
+            ),
+          ],
+        ),
+      ));
+      // Clear the form fields after saving
+      _titleController.clear();
+      _selectedCurrency = '';
+      _budgetController.clear();
+      _startDateController.clear();
+      _endDateController.clear();
+    } catch (e) {
+      print('Error saving trip: $e');
+      // Show error message
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Row(
+          children: <Widget>[
+            const Icon(Icons.close, color: Colors.red),
+            const SizedBox(width: 20),
+            Text(
+              'Error saving trip. Please try again later.',
+              style: GoogleFonts.poppins(), // Set font family to Poppins
+            ),
+          ],
+        ),
+      ));
+    }
+  }
+}

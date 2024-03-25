@@ -287,7 +287,7 @@ class _AddtripState extends State<Addtrip> {
 
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/addtrippopup');
+                  Navigator.pushNamed(context, '/addtrip_data');
                 },
                 child: Container(
                   height: 197,
