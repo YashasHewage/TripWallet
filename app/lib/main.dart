@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, use_super_parameters
+import 'package:app/Models/expence.dart';
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
 import 'package:app/pages/add_budget.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         '/addtrip': (context) => const Addtrip(tripDataList: [],),
         '/settings': (context) => const ProfilePage(),
         '/expencespage': (context) => const ExpencesState(),
-        '/allexpences': (context) => AllExpenses(expenses: [],),
+        '/allexpences': (context) => AllExpenses(expenses: const [], onDeletedExpence: (ExpenceModel expense) {}),
         '/login': (context) => const LoginPage(),
         '/person': (context) => const Signupperinfo(),
         '/concat': (context) => const Signupcon(),
