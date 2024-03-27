@@ -353,29 +353,28 @@
 //     );
 //   }
 // }
-import 'package:app/Models/expences.dart';
+import 'package:app/Models/expence.dart';
+import 'package:app/widgets/expence_list.dart';
 import 'package:flutter/material.dart';
 
 class AllExpenses extends StatelessWidget {
-  final List<Expense> expenses;
 
-  AllExpenses({required this.expenses});
+
+  final List<ExpenceModel> expenses;
+  final Function(ExpenceModel) onDeletedExpence;
+
+  const AllExpenses({
+  super.key,
+  required this.expenses, 
+  required this.onDeletedExpence
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('All Expenses'),
-      ),
-      body: ListView.builder(
-        itemCount: expenses.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(expenses[index].title),
-            subtitle: Text('${expenses[index].date} - ${expenses[index].amount} LKR - ${expenses[index].category}'),
-          );
-        },
-      ),
-    );
-  }
+      appBar: AppBar(),
+      body: ExpenceList(
+        expenceList: expenses,
+        onDeletedExpence: onDeletedExpence,),);
+}
 }

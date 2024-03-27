@@ -311,7 +311,11 @@ class _Expences_StateState extends State<ExpencesState> {
                       ),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => AllExpenses(expenses: [],)));
+                          builder: (_) => AllExpenses(
+                            expenses: _expenceList,
+                            onDeletedExpence: OnDeletedExpence,
+                          ),
+                        ));
                       },
                       color: Colors.white,
                     ),

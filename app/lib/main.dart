@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, use_super_parameters
+import 'package:app/Models/expence.dart';
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
 import 'package:app/pages/add_budget.dart';
@@ -19,7 +20,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
@@ -28,36 +28,35 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData && snapshot.data != null) {
-              return const loading();
-            } else {
-              return const LoginPage();
-            }
-          }),
-      routes: {
-
-        '/addbudget': (context) => BudgetPage(totalBudget: ''),
-        '/addtrip': (context) => const Addtrip(tripDataList: [],),
-        '/settings': (context) => const ProfilePage(),
-        '/expencespage': (context) => const ExpencesState(),
-        '/allexpences': (context) => AllExpenses(expenses: [],),
-        '/loginpage': (context) => LoginPage(),
-        '/person': (context) => const Signupperinfo(),
-        '/concat': (context) => const Signupcon(),
-        '/profileEdit': (context) => const ProfileEdit(), 
-        '/languages': (context) => const LanguageSettingsPage(),
-        '/addnewtrip':(context) => const AddTripPage(),
-        '/addtrip_data':(context) => const TripForm(),
-      }
-    );
+        debugShowCheckedModeBanner: false,
+        home: StreamBuilder<User?>(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData && snapshot.data != null) {
+                return const loading();
+              } else {
+                return const LoginPage();
+              }
+            }),
+        routes: {
+          '/addbudget': (context) => BudgetPage(totalBudget: ''),
+          '/addtrip': (context) => const Addtrip(
+                tripDataList: [],
+              ),
+          '/settings': (context) => const ProfilePage(),
+          '/expencespage': (context) => const ExpencesState(),
+          '/allexpences': (context) => AllExpenses(
+              expenses: const [], onDeletedExpence: (ExpenceModel expense) {}),
+          '/loginpage': (context) => LoginPage(),
+          '/person': (context) => const Signupperinfo(),
+          '/concat': (context) => const Signupcon(),
+          '/profileEdit': (context) => const ProfileEdit(),
+          '/languages': (context) => const LanguageSettingsPage(),
+          '/addnewtrip': (context) => const AddTripPage(),
+          '/addtrip_data': (context) => const TripForm(),
+        });
   }
 }
