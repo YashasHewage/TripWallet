@@ -83,7 +83,8 @@ flutter:
     - assets/wallet.png.png
     - assets/icons8-card-wallet-30.png
     - assets/icons8-cabify-50.png
-    
+    - assets/loading.png
+    - assets/login.png
 
 
     

@@ -16,8 +16,8 @@ class loading extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  width: 350, // Set the width as per your requirement
-                  height: 350, // Set the height as per your requirement
+                  width: 350, 
+                  height: 350, 
                   child: Image.asset('assets/loading.png'),
                 ),
               ),

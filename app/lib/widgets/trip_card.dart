@@ -1,5 +1,6 @@
 import 'package:app/pages/Expences_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TripCard extends StatelessWidget {
   final Map<String, dynamic> tripData;
@@ -10,12 +11,12 @@ class TripCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const ExpencesState()));},
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => const ExpencesState()));
+      },
       child: Container(
         height: 197,
-        margin: const EdgeInsets.only(
-            left: 20.0, right: 20.0, bottom: 20.0),
+        margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
         decoration: BoxDecoration(
           image: const DecorationImage(
             image: AssetImage('assets/tripimage.png.jpg'),
@@ -45,9 +46,15 @@ class TripCard extends StatelessWidget {
                       children: <Widget>[
                         const SizedBox(width: 5),
                         Container(
-                          margin:
-                              const EdgeInsets.only(left: 10, top: 8),
-                          child: Text(' ${tripData['title']}'),
+                          margin: const EdgeInsets.only(left: 10, top: 6),
+                          child: Text(
+                            ' ${tripData['title']}',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 22.0, 
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -59,12 +66,26 @@ class TripCard extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Container(
-                            margin: const EdgeInsets.only(top: 1),
+                            margin: const EdgeInsets.only(top: 3),
                             child: Row(
                               children: [
-                                Text(' ${tripData['start_date']}'),
+                                Text(
+                                  ' ${tripData['start_date']}',
+                                  style: GoogleFonts.poppins(
+                                    color: Color.fromARGB(255, 224, 224, 224),
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 13,
+                                  ),
+                                ),
                                 const SizedBox(width: 20),
-                                Text(' ${tripData['end_date']}'),
+                                Text(
+                                  ' ${tripData['end_date']}',
+                                  style: GoogleFonts.poppins(
+                                    color: Color.fromARGB(255, 224, 224, 224),
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 13,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -79,6 +100,5 @@ class TripCard extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

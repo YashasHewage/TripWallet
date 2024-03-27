@@ -175,7 +175,8 @@ class _AddTripPageState extends State<AddTripPage> {
 
                     // Currency Text
                     Container(
-                      margin: const EdgeInsets.only(top: 10), // Set the top margin here
+                      margin: const EdgeInsets.only(
+                          top: 10), // Set the top margin here
                       child: Text(
                         'Currency',
                         style: GoogleFonts.poppins(
@@ -208,7 +209,7 @@ class _AddTripPageState extends State<AddTripPage> {
                         },
                         child: _selectedCurrency == null
                             ? Container(
-                                height:40,
+                                height: 40,
                                 child: DropdownButtonFormField<String>(
                                   decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -495,7 +496,8 @@ class _AddTripPageState extends State<AddTripPage> {
                     ),
                     // End Date Picker
                     Container(
-                      margin: EdgeInsets.only(top: 10), // Set the top margin here
+                      margin:
+                          EdgeInsets.only(top: 10), // Set the top margin here
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -518,12 +520,14 @@ class _AddTripPageState extends State<AddTripPage> {
                               if (pickedDate != null) {
                                 setState(() {
                                   _endDateController.text =
-                                      DateFormat('yyyy-MM-dd').format(pickedDate);
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(pickedDate);
                                 });
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text('Please select an end date')),
+                                      content:
+                                          Text('Please select an end date')),
                                 );
                               }
                             },
@@ -540,7 +544,7 @@ class _AddTripPageState extends State<AddTripPage> {
                     Container(
                       margin: EdgeInsets.only(top: 50, right: 259),
                       child: Container(
-                        width: 10, 
+                        width: 10,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red,
@@ -548,11 +552,10 @@ class _AddTripPageState extends State<AddTripPage> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          onPressed: () {
-                          },
+                          onPressed: () {},
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 5, bottom: 5, right: 0, left: 0
-                            ), 
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, right: 0, left: 0),
                             child: Text(
                               'Delete',
                               style: GoogleFonts.poppins(
@@ -569,9 +572,7 @@ class _AddTripPageState extends State<AddTripPage> {
                       child: Align(
                         alignment: Alignment.center,
                         child: ElevatedButton(
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(

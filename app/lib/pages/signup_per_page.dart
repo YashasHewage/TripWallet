@@ -7,7 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class Signupperinfo extends StatelessWidget {
   const Signupperinfo({super.key});
 
@@ -49,11 +48,9 @@ class Signupperinfo extends StatelessWidget {
 
                 // ...
 
-                                child: Text('Sign up',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 30, 
-                                      fontWeight: FontWeight.bold
-                                    )),
+                child: Text('Sign up',
+                    style: GoogleFonts.poppins(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
               ),
               SizedBox(
                 height: 8,
@@ -88,10 +85,10 @@ class Signupperinfo extends StatelessWidget {
 
                     //date of birth text field
                     MyTextField(
-                      controller: dob,
-                      hintText: 'Date of birth',
-                      obscureText: false,
-                      style: GoogleFonts.poppins()), // Add this line
+                        controller: dob,
+                        hintText: 'Date of birth',
+                        obscureText: false,
+                        style: GoogleFonts.poppins()), // Add this line
                     SizedBox(height: 40),
                   ],
                 ),
