@@ -423,68 +423,7 @@ child: Container(
   ]),
 ),
 ),
-            // Positioned(
-            //   left: 110,
-            //   top: 44,
-            //   child: Container(
-            //     width: 25,
-            //     height: 25,
-            //     clipBehavior: Clip.antiAlias,
-            //     decoration: BoxDecoration(),
-            //     child: Stack(children: [
-            //       Positioned(
-            //         left: 0,
-            //         top: 0,
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             Navigator.of(context).push(MaterialPageRoute(
-            //                 builder: (_) => const AllExpences()));
-            //           },
-            //           child: Container(
-            //             width: 25,
-            //             height: 25,
-            //             child: Icon(
-            //               Icons.money,
-            //               color: Colors.white,
-            //               size: 25,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ]),
-            //   ),
-            // ),
-            // Positioned(
-            //   left: 251,
-            //   top: 44,
-            //   child: Container(
-            //     width: 25,
-            //     height: 25,
-            //     clipBehavior: Clip.antiAlias,
-            //     decoration: BoxDecoration(),
-            //     child: Stack(children: [
-            //       Positioned(
-            //         left: 0,
-            //         top: 0,
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             Navigator.of(context).push(MaterialPageRoute(
-            //                 builder: (_) => const ExpencesState()));
-            //           },
-            //           child: Container(
-            //             width: 25,
-            //             height: 25,
-            //             child: Icon(
-            //               Icons.pie_chart,
-            //               color: Colors.white,
-            //               size: 25,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ]),
-            //   ),
-            // ),
+
             Positioned(
               left: 336,
               top: 44,

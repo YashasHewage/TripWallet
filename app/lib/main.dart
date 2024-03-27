@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => const ProfilePage(),
         '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => AllExpenses(expenses: [],),
-        '/login': (context) => const LoginPage(),
+        '/loginpage': (context) => LoginPage(),
         '/person': (context) => const Signupperinfo(),
         '/concat': (context) => const Signupcon(),
         '/profileEdit': (context) => const ProfileEdit(), 

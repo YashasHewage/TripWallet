@@ -1,12 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:app/components/my_textfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 
 class Signupcon extends StatefulWidget {
   const Signupcon({Key? key}) : super(key: key);
@@ -82,72 +78,98 @@ class _SignupconState extends State<Signupcon> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 25.0, top: 65),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 18),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 60.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
                   child: Text(
-                    'Sign up',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Align(
+                  alignment: Alignment.centerLeft,
                   child: Text(
-                    'Contact info',
-                    style: TextStyle(fontSize: 20, color: Color(0xff7494d0)),
+                    'Contact Info',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                      color: const Color.fromARGB(255, 74, 148, 208),
+                    ),
                   ),
                 ),
-                SizedBox(height: 25),
-                // Email text field
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MyTextField(
-                      controller: emailController,
-                      hintText: 'Email',
-                      obscureText: false,
-                      style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: GoogleFonts.poppins(),
+                    hintText: 'Enter an email address',
+                    hintStyle: GoogleFonts.poppins(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
                     ),
-                    SizedBox(height: 40),
-                    // Password text field
-                    MyTextField(
-                      controller: passwordController,
-                      hintText: 'Password',
-                      obscureText: true,
-                      style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
-                    ),
-                    SizedBox(height: 40),
-
-                    // ...
-
-                    MyTextField(
-                      controller: confirmPasswordController,
-                      hintText: "Confirm Password",
-                      obscureText: true,
-                      style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
-                    ),
-                  ],
+                  ),
                 ),
-                Spacer(),
-                // Next button
-                Align(
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: TextFormField(
+                  controller: passwordController, 
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    labelStyle: GoogleFonts.poppins(),
+                    hintText: 'Enter a password',
+                    hintStyle: GoogleFonts.poppins(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: TextFormField(
+                  controller: confirmPasswordController, // Add this line
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Confirm password',
+                    labelStyle: GoogleFonts.poppins(),
+                    hintText: 'Confirm your password',
+                    hintStyle: GoogleFonts.poppins(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 200),
+                child: Align(
                   alignment: Alignment.center,
                   child: ElevatedButton(
                     onPressed: register,
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                       minimumSize: MaterialStateProperty.all(
@@ -159,38 +181,44 @@ class _SignupconState extends State<Signupcon> {
                     ),
                     child: Text(
                       "Next",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(height: 15),
-
-                // Already have an account
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account?',
-                      style: TextStyle(fontSize: 17),
+              ),
+              SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an account?',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
-                    SizedBox(width: 8),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: Text(
-                        'Log in',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  ),
+                  SizedBox(width: 8),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/loginpage');
+                    },
+                    child: Text(
+                      'Log in',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

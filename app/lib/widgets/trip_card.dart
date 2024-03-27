@@ -46,7 +46,7 @@ class TripCard extends StatelessWidget {
                       children: <Widget>[
                         const SizedBox(width: 5),
                         Container(
-                          margin: const EdgeInsets.only(left: 10, top: 6),
+                          margin: const EdgeInsets.only(left: 10, top: 8),
                           child: Text(
                             ' ${tripData['title']}',
                             style: GoogleFonts.poppins(
@@ -66,14 +66,14 @@ class TripCard extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Container(
-                            margin: const EdgeInsets.only(top: 3),
+                            margin: const EdgeInsets.only(top: 2),
                             child: Row(
                               children: [
                                 Text(
                                   ' ${tripData['start_date']}',
                                   style: GoogleFonts.poppins(
-                                    color: Color.fromARGB(255, 224, 224, 224),
-                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w200,
                                     fontSize: 13,
                                   ),
                                 ),
@@ -81,8 +81,8 @@ class TripCard extends StatelessWidget {
                                 Text(
                                   ' ${tripData['end_date']}',
                                   style: GoogleFonts.poppins(
-                                    color: Color.fromARGB(255, 224, 224, 224),
-                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w200,
                                     fontSize: 13,
                                   ),
                                 ),
