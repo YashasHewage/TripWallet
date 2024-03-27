@@ -62,7 +62,7 @@ class loading extends StatelessWidget {
                   alignment: Alignment.center,
                   child: ElevatedButton(
                     onPressed: (){
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushNamed(context, '/loginpage');
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(

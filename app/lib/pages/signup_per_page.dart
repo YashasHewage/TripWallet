@@ -34,88 +34,117 @@ class Signupperinfo extends StatelessWidget {
       Navigator.pushNamed(context, '/login');
     }
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 18),
+            children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-
-                // ...
-
-                child: Text('Sign up',
-                    style: GoogleFonts.poppins(
-                        fontSize: 30, fontWeight: FontWeight.bold)),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Text('Personal Info',
-                    style: TextStyle(fontSize: 20, color: Color(0xff7494D0))),
-              ),
-              SizedBox(height: 25),
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: [
-                    //first name text field
-                    MyTextField(
-                      controller: firstname,
-                      hintText: 'First name',
-                      obscureText: false,
-                      style: GoogleFonts.poppins(), // Add this line
-                    ),
-                    SizedBox(height: 40),
-
-                    //Last name text field
-                    MyTextField(
-                      controller: lastname,
-                      hintText: 'Last name',
-                      obscureText: false,
-                      style: GoogleFonts.poppins(), // Add this line
-                    ),
-                    SizedBox(height: 40),
-
-                    //date of birth text field
-                    MyTextField(
-                        controller: dob,
-                        hintText: 'Date of birth',
-                        obscureText: false,
-                        style: GoogleFonts.poppins()), // Add this line
-                    SizedBox(height: 40),
-                  ],
-                ),
-              ),
-              //next button
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _saveUserData();
-                  },
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    minimumSize: MaterialStateProperty.all(
-                      Size(350, 60),
-                    ),
-                    backgroundColor: MaterialStateProperty.all(
-                      Color(0xFF213660),
+                padding: const EdgeInsets.only(top: 60.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
                   ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Align(
+                  alignment: Alignment.centerLeft,
                   child: Text(
-                    "Next",
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    'Personal Info',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                      color: const Color.fromARGB(255, 74, 148, 208),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: TextFormField(
+                  controller: firstname,
+                  decoration: InputDecoration(
+                    labelText: 'First Name',
+                    labelStyle: GoogleFonts.poppins(),
+                    hintText: 'Enter your first name',
+                    hintStyle: GoogleFonts.poppins(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: TextFormField(
+                  controller: lastname,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Last name',
+                    labelStyle: GoogleFonts.poppins(),
+                    hintText: 'Enter your last name',
+                    hintStyle: GoogleFonts.poppins(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                  ),
+                ),
+              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 25),
+              //   child: TextFormField(
+              //     controller: dob,
+              //     obscureText: true,
+              //     decoration: InputDecoration(
+              //       labelText: 'Confirm password',
+              //       labelStyle: GoogleFonts.poppins(),
+              //       hintText: 'Confirm your password',
+              //       hintStyle: GoogleFonts.poppins(),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(11),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 280),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/loginpage');
+                    },
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                        Size(350, 60),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        Color(0xFF213660),
+                      ),
+                    ),
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -123,8 +152,13 @@ class Signupperinfo extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already have an account?',
-                      style: TextStyle(fontSize: 17)),
+                  Text(
+                    'Already have an account?',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                    ),
+                  ),
                   SizedBox(width: 8),
                   TextButton(
                     onPressed: () {
@@ -133,9 +167,11 @@ class Signupperinfo extends StatelessWidget {
                     child: Text(
                       'Log in',
                       style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.blue,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
                     ),
                   ),
                 ],

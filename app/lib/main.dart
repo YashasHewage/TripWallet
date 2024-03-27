@@ -49,7 +49,6 @@ class MyApp extends StatelessWidget {
         '/addbudget': (context) => BudgetPage(totalBudget: ''),
         '/addtrip': (context) => const Addtrip(tripDataList: [],),
         '/settings': (context) => const ProfilePage(),
-        '/expencespage': (context) => const ExpencesState(),
         '/allexpences': (context) => AllExpenses(expenses: const [], onDeletedExpence: (ExpenceModel expense) {}),
         '/login': (context) => const LoginPage(),
         '/person': (context) => const Signupperinfo(),

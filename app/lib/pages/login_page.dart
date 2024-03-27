@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
           password: passwordController.text.trim());
     } catch (e) {
       showDialog(
+        // ignore: use_build_context_synchronously
         context: context,
         builder: (context) => AlertDialog(
           title: Text(e.toString()),
@@ -70,20 +71,31 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 6),
                       Container(
-                        margin: EdgeInsets.only(left: 10.0),
-                        child: Text(
-                          'Few steps away',
-                          style: GoogleFonts.poppins(),
-                        ),
-                      ),
+                        margin: EdgeInsets.symmetric(horizontal: 15.0), 
+                        child: ElevatedButton(
+                          onPressed: () {
+                            login();
+                          }, 
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            minimumSize: MaterialStateProperty.all(
+                              ui.Size(350, 60),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                              Color(0xFF213660),
+                            ),
+                          ),
+                          child: Text(
+                            "Login",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white, 
+                              fontSize: 18
+                            ),
 
-                      Container(
-                        margin: EdgeInsets.only(top: 5.0, bottom: 15.0),
-                        child: Center(
-                          child: Container(
-                            width: 300,
-                            height: 300,
-                            child: Image.asset('assets/login.png'),
                           ),
                         ),
                       ),

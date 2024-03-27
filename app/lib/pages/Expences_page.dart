@@ -390,42 +390,42 @@ class _Expences_StateState extends State<ExpencesState> {
               ),
             ),
             Positioned(
-              left: 37,
-              top: 44,
-              child: Container(
-                width: 25,
-                height: 25,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(),
-                child: Stack(children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: 25,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/icons8-cabify-50.png'),
-                          fit: BoxFit.cover,
-                          filterQuality: FilterQuality.high,
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(23),
-                          bottomRight: Radius.circular(23),
-                        ),
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => const AddTripPage()));
-                        },
-                      ),
-                    ),
-                  ),
-                ]),
-              ),
-            ),
+  left: 37,
+  top: 44,
+child: Container(
+  width: 25,
+  height: 25,
+  clipBehavior: Clip.antiAlias,
+  decoration: BoxDecoration(),
+  child: Stack(children: [
+    Positioned(
+      left: 0,
+      top: 0,
+      child: Container(
+        width: 25,
+        height: 25,
+        decoration: BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage('assets/icons8-cabify-50.png'),
+    fit: BoxFit.cover,
+    filterQuality: FilterQuality.high, 
+  ),
+  borderRadius: BorderRadius.only(
+    bottomLeft: Radius.circular(23),
+    bottomRight: Radius.circular(23),
+  ),
+),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const AddTripPage()));
+          },
+        ),
+      ),
+    ),
+  ]),
+),
+),
             // Positioned(
             //   left: 110,
             //   top: 44,
