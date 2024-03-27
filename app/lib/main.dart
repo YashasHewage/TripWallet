@@ -46,10 +46,10 @@ class MyApp extends StatelessWidget {
       routes: {
 
         '/addbudget': (context) => BudgetPage(totalBudget: ''),
-        '/addtrip': (context) => const Addtrip(),
+        '/addtrip': (context) => const Addtrip(tripDataList: [],),
         '/settings': (context) => const ProfilePage(),
         '/expencespage': (context) => const ExpencesState(),
-        '/allexpences': (context) => const AllExpences(),
+        '/allexpences': (context) => AllExpenses(expenses: [],),
         '/login': (context) => const LoginPage(),
         '/person': (context) => const Signupperinfo(),
         '/concat': (context) => const Signupcon(),

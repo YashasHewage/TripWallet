@@ -79,12 +79,16 @@ flutter:
     - assets/settingsbackground.png
     - assets/Back.png
     - assets/Group2.png
+    - assets/tripimage.png.jpg
+    - assets/wallet.png.png
+    - assets/icons8-card-wallet-30.png
+    - assets/icons8-cabify-50.png
     
 
 
     
 
-    - assets/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

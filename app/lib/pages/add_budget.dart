@@ -340,7 +340,7 @@ class _BudgetPageState extends State<BudgetPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              'Date',
+                              'Record ',
                               style: GoogleFonts.poppins(fontSize: 10.0),
                             ),
                             Text(
