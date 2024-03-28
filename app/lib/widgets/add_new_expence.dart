@@ -2,6 +2,7 @@
 
 import 'package:app/Models/expence.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddNewExpence extends StatefulWidget {
   final void Function(ExpenceModel expence) onAddExpence;
@@ -102,35 +103,37 @@ class _AddNewExpenceState extends State<AddNewExpence> {
                     padding: const EdgeInsets.symmetric(vertical: 30.0),
                     child: Center(
                       child: Container(
-                        width: 250,
+                        width: 350,
                         decoration: BoxDecoration(
-                          color: Color(0xFFE5EFFF),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(80),
-                              bottomLeft: Radius.circular(80),
-                              bottomRight: Radius.circular(80)),
+                              topLeft: Radius.circular(11),
+                              bottomLeft: Radius.circular(11),
+                              bottomRight: Radius.circular(11),
+                              topRight: Radius.circular(11),
+                              ),
                         ),
-                        //amount text field
-                        child: TextField(
-                          controller: _amountController,
-                          decoration: InputDecoration(
-                            hintText: "Enter Amount ",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(80),
-                                  bottomLeft: Radius.circular(80),
-                                  bottomRight: Radius.circular(80)),
-                            ),
-                            suffixIcon: Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Image.asset(
-                                "assets/lkr.png",
-                                width: 50,
-                                height: 50,
+                        child: Container(
+                          margin: EdgeInsets.only(),
+                          child: TextField(
+                            controller: _amountController,
+                            decoration: InputDecoration(
+                              hintText: "Enter Amount",
+                              hintStyle: TextStyle(
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(11)), 
+                              ),
+                              filled: true, 
+                              fillColor: Colors.white, 
+                              suffix: Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: Text('USD'), 
                               ),
                             ),
+                            keyboardType: TextInputType.number,
                           ),
-                          keyboardType: TextInputType.number,
                         ),
                       ),
                     ),
@@ -141,7 +144,7 @@ class _AddNewExpenceState extends State<AddNewExpence> {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal:20, ),
                 child: Row(
                   children: [
                     Text(
@@ -149,64 +152,68 @@ class _AddNewExpenceState extends State<AddNewExpence> {
                       style: TextStyle(
                           color: Color(0xFF213660),
                           fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: GoogleFonts.poppins().fontFamily), 
                     ),
                     Spacer(),
                     //date picker
-                    Row(
-                      children: [
-                        Text(
-                          formatteDate.format(_selectedDate),
-                          style: TextStyle(
-                              color: Color(0xFF213660),
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        IconButton(
-                          onPressed: _openDateModal,
-                          icon: Icon(Icons.date_range_outlined),
-                        )
-                      ],
-                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 1), 
+                      child: Row(
+                        children: [
+                          Text(
+                            formatteDate.format(_selectedDate),
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 32, 32, 32),
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.poppins().fontFamily),
+                          ),
+                          IconButton(
+                            onPressed: _openDateModal,
+                            icon: Icon(Icons.date_range_outlined),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
-            Builder(builder: (context) {
-              return Center(
-                child: Wrap(
-                  spacing: 20.0,
-                  runSpacing: 15.0,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buildCategoryButton("Food"),
-                        SizedBox(width: 20.0),
-                        buildCategoryButton("Transport"),
-                        SizedBox(width: 20.0),
-                        buildCategoryButton("Grocery"),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buildCategoryButton("Health"),
-                        SizedBox(width: 20.0),
-                        buildCategoryButton("Other"),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }),
+            SizedBox(height: 10),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20.0), 
+              child: Builder(builder: (context) {
+                return Center(
+                  child: Wrap(
+                    spacing: 10.0,
+                    runSpacing: 15.0,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          buildCategoryButton("Food", style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily)),
+                          SizedBox(width: 10.0),
+                          buildCategoryButton("Transport", style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily)),
+                          SizedBox(width: 10.0),
+                          buildCategoryButton("Grocery", style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily)),
+                          SizedBox(width: 10.0),
+                          buildCategoryButton("Health", style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily)),
+                          SizedBox(width: 10.0),
+                          buildCategoryButton("Other", style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily)),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
             SizedBox(height: 20.0),
             Center(
               child: Container(
                 width: 380,
                 decoration: BoxDecoration(
-                  color: Color(0xFFE5EFFF),
+                  color: Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(80),
                     bottomLeft: Radius.circular(80),
@@ -215,45 +222,64 @@ class _AddNewExpenceState extends State<AddNewExpence> {
                   ),
                 ),
                 //title text field
-                child: TextField(
-                  controller: _titleController,
-                  decoration: InputDecoration(
-                    hintText: "Add new expences title ",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(80),
-                      ),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal:10),
+                  child: TextField(
+                    controller: _titleController,
+                    decoration: InputDecoration(
+                        hintText: " Title",
+                        hintStyle: TextStyle(
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                          fontSize: 20, 
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromARGB(255, 43, 43, 43), 
+                        ),
+                      border: InputBorder.none, 
+                      fillColor: Colors.white, 
+                      filled: true, 
                     ),
+                    style: TextStyle(
+                      fontSize: 20, 
+                      color: Colors.red,
+                    ),
+                    keyboardType: TextInputType.text,
                   ),
-                  keyboardType: TextInputType.text,
                 ),
               ),
             ),
-            SizedBox(height: 10.0),
             //save button
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
+          Padding(
+            padding: const EdgeInsets.only(top: 10, right: 20.0, left: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 60), 
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                     onPressed: _handleFormSubmit,
                     child: Text(
                       "Save",
-                      style: TextStyle(fontSize: 18),
+                      style: GoogleFonts.poppins(
+                        fontSize: 18, 
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
             SizedBox(height: 20.0),
           ],
         ),
       ),
     );
-  }
-
-  Widget buildCategoryButton(String categoryName) {
+  }Widget buildCategoryButton(String categoryName, {required TextStyle style}) {
     Category category = getCategoryFromString(categoryName);
     IconData icon = CategoryIcons[category]!;
     Color color = CategoryColor[category]!;
@@ -272,21 +298,21 @@ class _AddNewExpenceState extends State<AddNewExpence> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: isSelected ? Color(0xFF213660) : color,
-                width: isSelected ? 6.0 : 1.0,
+                color: isSelected ? Color.fromARGB(255, 33, 143, 233) : color,
+                width: isSelected ? 4 : 1,
               ),
             ),
             child: CircleAvatar(
               backgroundColor:color,
-              radius: 30.0,
-              child: Icon(icon, color: Colors.white, size: 30.0),
+              radius: 25.0, 
+              child: Icon(icon, color: Colors.white, size: 20), 
             ),
           ),
           SizedBox(height: 4.0),
           Text(
             categoryName.toUpperCase(),
             style: TextStyle(
-              color: isSelected ? Colors.blue : Color(0xFF213660),
+              color: isSelected ? Color.fromARGB(255, 33, 143, 233) : Color.fromARGB(255, 39, 39, 39),
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             ),
           ),
@@ -294,6 +320,7 @@ class _AddNewExpenceState extends State<AddNewExpence> {
       ),
     );
   }
+
 
   Category getCategoryFromString(String categoryName) {
     switch (categoryName.toLowerCase()) {

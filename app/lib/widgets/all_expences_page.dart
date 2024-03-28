@@ -356,6 +356,8 @@
 import 'package:app/Models/expence.dart';
 import 'package:app/widgets/expence_list.dart';
 import 'package:flutter/material.dart';
+      import 'package:google_fonts/google_fonts.dart';
+
 
 class AllExpenses extends StatelessWidget {
 
@@ -372,7 +374,13 @@ class AllExpenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
+            appBar: AppBar(
+              title: Text(
+                'All expenses',
+                style: GoogleFonts.poppins(), // Set the font family as GoogleFonts.poppins
+              ),
+            ),
       body: ExpenceList(
         expenceList: expenses,
         onDeletedExpence: onDeletedExpence,),);
