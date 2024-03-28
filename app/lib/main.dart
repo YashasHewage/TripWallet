@@ -2,6 +2,7 @@
 import 'package:app/Models/expence.dart';
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
+import 'package:app/pages/aboutus.dart';
 import 'package:app/pages/add_budget.dart';
 import 'package:app/pages/addtrip_data.dart';
 import 'package:app/pages/addtrip_page.dart';
@@ -42,6 +43,8 @@ class MyApp extends StatelessWidget {
               }
             }),
         routes: {
+
+          '/aboutus': (context) => AboutUsPage(),
           '/addbudget': (context) => BudgetPage(totalBudget: ''),
           '/addtrip': (context) => const Addtrip(
                 tripDataList: [],
