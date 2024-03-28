@@ -41,7 +41,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/aboutus.png', // Replace with your image asset path
+              'assets/aboutusman.png', // Replace with your image asset path
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.fitWidth,
             ),
