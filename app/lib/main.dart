@@ -11,6 +11,7 @@ import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/language_set.dart';
 import 'package:app/pages/login_page.dart';
+import 'package:app/pages/privacy.dart';
 import 'package:app/pages/profile_edit.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/signup_con_page.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
               }
             }),
         routes: {
+          '/privacypolicy':(context) => PrivacyPolicyPage (),
 
           '/aboutus': (context) => AboutUsPage(),
           '/addbudget': (context) => BudgetPage(totalBudget: ''),

@@ -95,7 +95,9 @@ import 'package:flutter/widgets.dart';
               const Divider(thickness: 0.1),
               ProfileListTile(
                 title: 'Privacy policy',
-                onTap: () => {},
+                onTap: () => {
+                  Navigator.pushNamed(context, '/privacypolicy'),
+                },
               ),
               const Divider(thickness: 0.1),
               ProfileListTile(
