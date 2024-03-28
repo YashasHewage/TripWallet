@@ -375,8 +375,6 @@ class AllExpenses extends StatelessWidget {
       appBar: AppBar(),
       body: ExpenceList(
         expenceList: expenses,
-        onDeletedExpence: onDeletedExpence,
-      ),
-    );
-  }
+        onDeletedExpence: onDeletedExpence,),);
+}
 }

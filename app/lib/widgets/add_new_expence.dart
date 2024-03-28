@@ -2,7 +2,7 @@
 
 import 'package:app/Models/expence.dart';
 import 'package:flutter/material.dart';
- 
+
 class AddNewExpence extends StatefulWidget {
   final void Function(ExpenceModel expence) onAddExpence;
   const AddNewExpence({
@@ -123,16 +123,11 @@ class _AddNewExpenceState extends State<AddNewExpence> {
                             ),
                             suffixIcon: Padding(
                               padding: const EdgeInsets.all(5),
-                              child:Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text('LKR'),
-                              )
-
-                              // Image.asset(
-                              //   "assets/lkr.png",
-                              //   width: 50,
-                              //   height: 50,
-                              // ),
+                              child: Image.asset(
+                                "assets/lkr.png",
+                                width: 50,
+                                height: 50,
+                              ),
                             ),
                           ),
                           keyboardType: TextInputType.number,

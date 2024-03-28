@@ -1,5 +1,7 @@
+
 import 'package:google_fonts/google_fonts.dart';
-import 'package:app/components/my_textfield.dart';
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
@@ -10,6 +12,8 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
+bool _obscureText = true;
 
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
@@ -43,28 +47,40 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 18),
+                  const SizedBox(height: 18),
                   // Top text
 
                   Container(
-                    margin: EdgeInsets.only(top: 40.0, left: 10),
+                    margin:const EdgeInsets.only(top: 40.0, left: 10),
                     child: Text(
                       'Welcome Back!',
                       style: GoogleFonts.poppins(
-                          fontSize: 24, fontWeight: FontWeight.w600),
+                          fontSize: 24, fontWeight: FontWeight.w500),
                     ),
                   ),
-                  SizedBox(height: 6),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      'Few steps away',
-                      style: GoogleFonts.poppins(),
-                    ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Few steps ',
+                          style: GoogleFonts.poppins(),
+                        ),
+                      ),
+                      Container(
+                        margin:const  EdgeInsets.only(left: 3),
+                        child: Text(
+                          'away ',
+                          style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 74, 148, 208),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
 
                   Container(
-                    margin: EdgeInsets.only(top: 5.0, bottom: 15.0),
+                    margin: const EdgeInsets.only(top: 5.0, bottom: 15.0),
                     child: Center(
                       child: Container(
                         width: 300,
@@ -73,28 +89,67 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                 const  SizedBox(height: 10),
                   // Text fields
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        height: 50,
-                        child: MyTextField(
-                          controller: emailController,
-                          hintText: 'Email',
-                          style: GoogleFonts.poppins(),
-                          obscureText: false,
+                        margin:const  EdgeInsets.only(left: 15, right: 15),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Container(
+                            height: 50,
+                            child: TextFormField(
+                              controller: emailController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Email',
+                                labelStyle: GoogleFonts.poppins(),
+                                hintText: 'Enter an email address',
+                                hintStyle: GoogleFonts.poppins(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      SizedBox(height: 20),
                       Container(
-                        height: 50, // Change this value to your desired height
-                        child: MyTextField(
-                          controller: passwordController,
-                          hintText: 'Password',
-                          style: GoogleFonts.poppins(),
-                          obscureText: true,
+                        margin: EdgeInsets.only(top: 5, left: 15, right: 15),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Container(
+                            height: 50,
+                            child: TextFormField(
+                              controller: passwordController,
+                              obscureText: _obscureText,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                labelStyle: GoogleFonts.poppins(),
+                                hintText: 'Enter a password',
+                                hintStyle: GoogleFonts.poppins(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureText
+                                        ? Icons.visibility_off
+                                        : Icons
+                                            .visibility, // Choose icon based on password visibility
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText =
+                                          !_obscureText; // Toggle the state of password visibility
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
 
@@ -137,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                             "Don't have an account?",
                             style: GoogleFonts.poppins(fontSize: 14),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           TextButton(

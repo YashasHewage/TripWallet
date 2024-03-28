@@ -1,5 +1,4 @@
 // ignore_for_file: unused_element, prefer_const_constructors, file_names, camel_case_types, non_constant_identifier_names
-
 import 'package:app/Models/expence.dart';
 import 'package:app/pages/add_budget.dart';
 import 'package:app/pages/addtrip_page.dart';
@@ -321,6 +320,7 @@ class _Expences_StateState extends State<ExpencesState> {
                     ),
                   ),
                 ),
+                
               ],
             ),
           ),
@@ -351,7 +351,7 @@ class _Expences_StateState extends State<ExpencesState> {
               ),
             ),
             Positioned(
-              left: 165,
+              left: 16,
               top: 0,
               child: Container(
                 width: 60,
@@ -426,104 +426,43 @@ child: Container(
   ]),
 ),
 ),
-            // Positioned(
-            //   left: 110,
-            //   top: 44,
-            //   child: Container(
-            //     width: 25,
-            //     height: 25,
-            //     clipBehavior: Clip.antiAlias,
-            //     decoration: BoxDecoration(),
-            //     child: Stack(children: [
-            //       Positioned(
-            //         left: 0,
-            //         top: 0,
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             Navigator.of(context).push(MaterialPageRoute(
-            //                 builder: (_) => const AllExpences()));
-            //           },
-            //           child: Container(
-            //             width: 25,
-            //             height: 25,
-            //             child: Icon(
-            //               Icons.money,
-            //               color: Colors.white,
-            //               size: 25,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ]),
-            //   ),
-            // ),
-            // Positioned(
-            //   left: 251,
-            //   top: 44,
-            //   child: Container(
-            //     width: 25,
-            //     height: 25,
-            //     clipBehavior: Clip.antiAlias,
-            //     decoration: BoxDecoration(),
-            //     child: Stack(children: [
-            //       Positioned(
-            //         left: 0,
-            //         top: 0,
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             Navigator.of(context).push(MaterialPageRoute(
-            //                 builder: (_) => const ExpencesState()));
-            //           },
-            //           child: Container(
-            //             width: 25,
-            //             height: 25,
-            //             child: Icon(
-            //               Icons.pie_chart,
-            //               color: Colors.white,
-            //               size: 25,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ]),
-            //   ),
-            // ),
+
             Positioned(
               left: 336,
               top: 44,
-              child: Container(
-                width: 25,
-                height: 25,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(),
-                child: Stack(children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: 25,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/icons8-card-wallet-30.png'),
-                          fit: BoxFit.cover,
-                          filterQuality: FilterQuality.high,
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(23),
-                          bottomRight: Radius.circular(23),
-                        ),
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) =>const BudgetPage(totalBudget: '',)));
-                        },//
-                      ),
-                    ),
-                  ),
-                ]),
-              ),
+              child:  Container(
+  width: 25,
+  height: 25,
+  clipBehavior: Clip.antiAlias,
+  decoration: BoxDecoration(),
+  child: Stack(children: [
+    Positioned(
+      left: 0,
+      top: 0,
+      child: Container(
+        width: 25,
+        height: 25,
+        decoration: BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage('assets/icons8-card-wallet-30.png'),
+    fit: BoxFit.cover,
+    filterQuality: FilterQuality.high, 
+  ),
+  borderRadius: BorderRadius.only(
+    bottomLeft: Radius.circular(23),
+    bottomRight: Radius.circular(23),
+  ),
+),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const BudgetPage(totalBudget: '',)));
+          },
+        ),
+      ),
+    ),
+  ]),
+),
             ),
           ],
         ),
