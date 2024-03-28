@@ -5,7 +5,7 @@ import 'package:app/pages/Expences_page.dart';
 import 'package:app/pages/add_budget.dart';
 import 'package:app/pages/addtrip_data.dart';
 import 'package:app/pages/addtrip_page.dart';
-import 'package:app/pages/addtrippopup_page.dart';
+// import 'package:app/pages/addtrippopup_page.dart';
 import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/language_set.dart';

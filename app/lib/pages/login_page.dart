@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
-                  import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:app/components/my_textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +13,8 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
+bool _obscureText = true;
 
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
@@ -49,69 +51,118 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 18),
                   // Top text
 
-                                    Container(
-                                      margin: EdgeInsets.only(top: 40.0, left:10),
-                                      child: Text(
-                                        'Welcome Back!',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 24, 
-                                          fontWeight: FontWeight.w600
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Container(
-                                      margin: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        'Few steps away',
-                                        style: GoogleFonts.poppins(),
-                                      ),
-                                    ),
+                  Container(
+                    margin: EdgeInsets.only(top: 40.0, left: 10),
+                    child: Text(
+                      'Welcome Back!',
+                      style: GoogleFonts.poppins(
+                          fontSize: 24, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Few steps ',
+                          style: GoogleFonts.poppins(),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 3),
+                        child: Text(
+                          'away ',
+                          style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 74, 148, 208),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
                   Container(
                     margin: EdgeInsets.only(top: 5.0, bottom: 15.0),
                     child: Center(
                       child: Container(
-                        width: 300, 
-                        height: 300, 
+                        width: 300,
+                        height: 300,
                         child: Image.asset('assets/login.png'),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10), 
+                  SizedBox(height: 10),
                   // Text fields
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        height: 50, 
-                        child: MyTextField(
-                          controller: emailController,
-                            hintText: 'Email',
-                            style: GoogleFonts.poppins(),
-                          obscureText: false,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                        Container(
-                          height: 50, // Change this value to your desired height
-                          child: MyTextField(
-                            controller: passwordController,
-                            hintText: 'Password',
-                            style: GoogleFonts.poppins(),
-                            obscureText: true,
+                        margin: EdgeInsets.only(left: 15, right: 15),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Container(
+                            height: 50,
+                            child: TextFormField(
+                              controller: emailController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Email',
+                                labelStyle: GoogleFonts.poppins(),
+                                hintText: 'Enter an email address',
+                                hintStyle: GoogleFonts.poppins(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 5, left: 15, right: 15),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Container(
+                            height: 50,
+                            child: TextFormField(
+                              controller: passwordController,
+                              obscureText: _obscureText,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                labelStyle: GoogleFonts.poppins(),
+                                hintText: 'Enter a password',
+                                hintStyle: GoogleFonts.poppins(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureText
+                                        ? Icons.visibility_off
+                                        : Icons
+                                            .visibility, // Choose icon based on password visibility
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText =
+                                          !_obscureText; // Toggle the state of password visibility
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
 
                       SizedBox(height: 40),
 
                       // Login button
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 15.0), 
+                        margin: EdgeInsets.symmetric(horizontal: 15.0),
                         child: ElevatedButton(
                           onPressed: () {
                             login();
-                          }, 
+                          },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
@@ -128,9 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "Login",
                             style: GoogleFonts.poppins(
-                              color: Colors.white, 
-                              fontSize: 18
-                            ),
+                                color: Colors.white, fontSize: 18),
                           ),
                         ),
                       ),

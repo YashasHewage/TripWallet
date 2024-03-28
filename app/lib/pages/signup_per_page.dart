@@ -88,11 +88,10 @@ class Signupperinfo extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 25),
                 child: TextFormField(
                   controller: lastname,
-                  obscureText: true,
                   decoration: InputDecoration(
-                    labelText: 'Last name',
+                    labelText: 'First Name',
                     labelStyle: GoogleFonts.poppins(),
-                    hintText: 'Enter your last name',
+                    hintText: 'Enter your first name',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(11),
@@ -141,7 +140,7 @@ class Signupperinfo extends StatelessWidget {
                       "Sign Up",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
