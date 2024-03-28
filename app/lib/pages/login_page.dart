@@ -17,10 +17,16 @@ class LoginPage extends StatefulWidget {
 bool _obscureText = true;
 
 class _LoginPageState extends State<LoginPage> {
+   bool isLoding = false;
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   Future<void> login() async {
+   
     try {
+      setState(() {
+      isLoding = true;
+    });
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim());
@@ -28,6 +34,10 @@ class _LoginPageState extends State<LoginPage> {
       print(e);
       return;
     }
+     setState(() {
+      isLoding = false;
+    });
+
     if (mounted) {
       Navigator.pushNamed(context, '/addtrip');
     }
@@ -42,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: SingleChildScrollView(
+          body: isLoding ? Center(child: CircularProgressIndicator()):SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
