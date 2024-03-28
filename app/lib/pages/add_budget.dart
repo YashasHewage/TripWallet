@@ -15,7 +15,7 @@ class _BudgetPageState extends State<BudgetPage> {
   final TextEditingController _budgetController = TextEditingController();
   List<String> budgets = []; // Maintain a list of budget values
 
-  // Function to calculate the total budget sum
+  // Function to calculate the total budget sumf
   String calculateTotalBudget() {
     double total = 0;
     for (String budget in budgets) {
