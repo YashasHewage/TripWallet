@@ -1,12 +1,13 @@
 
- // ignore_for_file: prefer_const_constructors, use_super_parameters
+
+// import 'package:app/pages/addtrippopup_page.dart';
+
 import 'package:app/Models/expence.dart';
 import 'package:app/firebase_options.dart';
 import 'package:app/pages/Expences_page.dart';
 import 'package:app/pages/add_budget.dart';
 import 'package:app/pages/addtrip_data.dart';
 import 'package:app/pages/addtrip_page.dart';
-
 import 'package:app/pages/loading_page.dart';
 import 'package:app/pages/default_addtrip.dart';
 import 'package:app/pages/language_set.dart';

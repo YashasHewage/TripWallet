@@ -1,7 +1,8 @@
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:google_fonts/google_fonts.dart';
 
-
+import 'package:app/components/my_textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   // Top text
 
                   Container(
-                    margin:const EdgeInsets.only(top: 40.0, left: 10),
+                    margin: EdgeInsets.only(top: 40.0, left: 10),
                     child: Text(
                       'Welcome Back!',
                       style: GoogleFonts.poppins(
@@ -61,14 +62,14 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 10),
+                        margin: EdgeInsets.only(left: 10),
                         child: Text(
                           'Few steps ',
                           style: GoogleFonts.poppins(),
                         ),
                       ),
                       Container(
-                        margin:const  EdgeInsets.only(left: 3),
+                        margin: EdgeInsets.only(left: 3),
                         child: Text(
                           'away ',
                           style: GoogleFonts.poppins(
@@ -89,13 +90,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                 const  SizedBox(height: 10),
+                  SizedBox(height: 10),
                   // Text fields
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin:const  EdgeInsets.only(left: 15, right: 15),
+                        margin: EdgeInsets.only(left: 15, right: 15),
                         child: Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: Container(

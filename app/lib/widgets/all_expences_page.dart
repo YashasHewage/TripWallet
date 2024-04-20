@@ -1,13 +1,11 @@
 // // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-
 // import 'package:app/Models/expence.dart';
 // import 'package:app/pages/Expences_page.dart';
 // import 'package:app/widgets/add_new_expence.dart';
 // import 'package:app/widgets/expence_list.dart';
 // import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
-
 
 // class AllExpences extends StatefulWidget {
 //   const AllExpences({super.key});
@@ -23,7 +21,7 @@
 //     //     amount: 500,
 //     //     date: DateTime.now(),
 //     //     category: Category.food),
-    
+
 //   ];
 //   // remove a expence
 //   void OnDeletedExpence(ExpenceModel expence) {
@@ -138,7 +136,7 @@
 //                 fontSize: 20,
 //                 fontWeight: FontWeight.w500,
 //               ),
-//               textAlign: TextAlign.start, 
+//               textAlign: TextAlign.start,
 //             ),
 //           ),
 //           centerTitle: false,
@@ -160,7 +158,6 @@
 //             mainAxisAlignment: MainAxisAlignment.start,
 //             children: [
 
-                           
 //               ExpenceList(
 //                 expenceList: _expenceList,
 //                 onDeletedExpence: OnDeletedExpence,
@@ -358,16 +355,11 @@ import 'package:app/widgets/expence_list.dart';
 import 'package:flutter/material.dart';
 
 class AllExpenses extends StatelessWidget {
-
-
   final List<ExpenceModel> expenses;
   final Function(ExpenceModel) onDeletedExpence;
 
-  const AllExpenses({
-  super.key,
-  required this.expenses, 
-  required this.onDeletedExpence
-  });
+  const AllExpenses(
+      {super.key, required this.expenses, required this.onDeletedExpence});
 
   @override
   Widget build(BuildContext context) {
@@ -375,6 +367,8 @@ class AllExpenses extends StatelessWidget {
       appBar: AppBar(),
       body: ExpenceList(
         expenceList: expenses,
-        onDeletedExpence: onDeletedExpence,),);
-}
+        onDeletedExpence: onDeletedExpence,
+      ),
+    );
+  }
 }

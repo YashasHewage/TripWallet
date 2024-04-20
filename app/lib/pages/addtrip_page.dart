@@ -153,8 +153,8 @@ class _AddTripPageState extends State<AddTripPage> {
                       decoration: InputDecoration(
                         hintText: 'Trip Title',
                         hintStyle: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600, 
                           color: const Color.fromARGB(255, 0, 0, 0),
                         ),
                         errorStyle: const TextStyle(
@@ -164,7 +164,10 @@ class _AddTripPageState extends State<AddTripPage> {
                         errorBorder: InputBorder.none,
                         focusedErrorBorder: InputBorder.none,
                       ),
-                      style: GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(
+                        fontSize: 24, 
+                        fontWeight: FontWeight.w600,
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please enter a title';

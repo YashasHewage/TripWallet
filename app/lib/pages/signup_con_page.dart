@@ -10,6 +10,8 @@ class Signupcon extends StatefulWidget {
   @override
   State<Signupcon> createState() => _SignupconState();
 }
+bool _obscureText = true;
+bool _obscureText1 = true;
 
 class _SignupconState extends State<Signupcon> {
   final emailController = TextEditingController();
@@ -128,38 +130,78 @@ class _SignupconState extends State<Signupcon> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: TextFormField(
-                  controller: passwordController, 
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: GoogleFonts.poppins(),
-                    hintText: 'Enter a password',
-                    hintStyle: GoogleFonts.poppins(),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: TextFormField(
-                  controller: confirmPasswordController, // Add this line
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Confirm password',
-                    labelStyle: GoogleFonts.poppins(),
-                    hintText: 'Confirm your password',
-                    hintStyle: GoogleFonts.poppins(),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                    ),
-                  ),
-                ),
-              ),
+               Container(
+                        margin: EdgeInsets.only(top: 10),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Container(
+                            height: 60,
+                            child: TextFormField(
+                              controller: passwordController,
+                              obscureText: _obscureText,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                labelStyle: GoogleFonts.poppins(),
+                                hintText: 'Enter a password',
+                                hintStyle: GoogleFonts.poppins(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureText
+                                        ? Icons.visibility_off
+                                        : Icons
+                                            .visibility,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText =
+                                          !_obscureText;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+              Container(
+                        margin: EdgeInsets.only(top: 10),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Container(
+                            height: 60,
+                            child: TextFormField(
+                              controller: confirmPasswordController,
+                              obscureText: _obscureText1,
+                              decoration: InputDecoration(
+                                labelText: 'Confirm Password',
+                                labelStyle: GoogleFonts.poppins(),
+                                hintText: 'Confirm your password',
+                                hintStyle: GoogleFonts.poppins(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureText1
+                                        ? Icons.visibility_off
+                                        : Icons
+                                            .visibility,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText1 =
+                                          !_obscureText1;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
               Padding(
                 padding: const EdgeInsets.only(top: 200),
                 child: Align(
@@ -183,7 +225,7 @@ class _SignupconState extends State<Signupcon> {
                       "Next",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
